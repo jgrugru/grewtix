@@ -1,0 +1,10 @@
+__pycache__/*
+__pycache__
+objects/__pycache__/*
+objects/__pycache__
+.pytest_cache
+data/tickets.csv
+data/currentTicketCount.txt
+data/test/*
+data/test
+.vscode/

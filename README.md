@@ -17,4 +17,5 @@ Features to add
  * make this work with click package, a cli tool
  * add back button after selecting option
  * build a pipeline in bitbucket.
- * add functionality to use two commands with one string: 3, PROT-2
+ * add functionality to use two commands with one string EX: 3, PROT-2
+ * migrate to Django framework.

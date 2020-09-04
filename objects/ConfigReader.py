@@ -6,7 +6,7 @@ class ConfigReader():
     def __init__(self, isNotUnitTest=True):
         self.parser = ConfigParser(interpolation=ExtendedInterpolation())
         if isNotUnitTest:
-            self.parser.read('ticket_tracking_system/config/dev.ini')
+            self.parser.read('config/dev.ini')
         else:
             self.parser.read('config/test.ini')
 

@@ -8,3 +8,5 @@ data/currentTicketCount.txt
 data/test/*
 data/test
 .vscode/
+config/dev.ini
+config/test.ini

@@ -9,4 +9,4 @@ data/test/*
 data/test
 .vscode/
 config/dev.ini
-config/test.ini
+ticket_tracking_system/config/dev.ini

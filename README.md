@@ -1,4 +1,4 @@
-CLI Ticket Based Tracking System
+Ticket Based Tracking System
 ================================
 
 Reason for development

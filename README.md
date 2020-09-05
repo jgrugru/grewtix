@@ -3,7 +3,7 @@ Ticket Based Tracking System
 
 Reason for development
 ----------------------
-TThis is the first project I have developed in Python. It started as a way to learn and grow my skills with Python.
+This is the first project I have developed in Python. It started as a way to learn and grow my skills with Python.
 
 How to Run
 ----------

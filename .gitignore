@@ -1,10 +1,7 @@
-__pycache__/*
-__pycache__
+__pycache__/
 objects/__pycache__/*
 objects/__pycache__
 .pytest_cache
 .vscode/
-data/*
 data/
-
-ttysystem/db.sqlite3
+db.sqlite3

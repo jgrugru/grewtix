@@ -1,10 +1,18 @@
-{% if latest_ticket_list %}
-    <ul>
-        {% for ticket in latest_ticket_list %}
-        <li><a href='/{{ticket.id}}/'>{{ ticket.subject}}</a></li>
-        {% endfor %}
-    </ul>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-{% else %}
-    <p>No tickets are available</p>
-{% endif %}
+<div class="jumbotron text-center">
+    <h1>Ticket Tracking System</h1>
+</div>
+
+<div class="container">
+    {% if latest_ticket_list %}
+        <ul class="list-group">
+            {% for ticket in latest_ticket_list %}
+            <li class="list-group-item"><a href='/{{ticket.id}}/'>{{ ticket }}</a></li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>No tickets are available</p>
+    {% endif %}
+</div>

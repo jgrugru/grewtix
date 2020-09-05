@@ -1,1 +1,44 @@
-{% ticket %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% if ticket.priority.priority == 'medium' %}
+    <div class="jumbotron text-left bg-warning">
+{% elif ticket.priority.priority == 'critical' %}
+    <div class="jumbotron text-left bg-danger">
+{% else %}
+    <div class="jumbotron text-left bg-light">
+{% endif %}
+
+    <h1>{{ticket}}</h1>
+</div>
+{% comment %} {% for x in range(10) %}
+{{ str(x) }}
+{{% endfor %}} {% endcomment %}
+
+<div class="container">
+
+    <form>
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Subject</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.subject }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Project</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.project }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.description }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Priority</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.priority }}">
+        </div>
+    </div>
+    </form>
+</div>

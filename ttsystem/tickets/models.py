@@ -37,7 +37,7 @@ class Ticket(models.Model):
     creation_date = models.DateTimeField('creation date')
 
     def __str__(self):
-        return self.subject
+        return self.ticketType.ticketType + '-' + str(self.id)
 
 class Attachment(models.Model): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)

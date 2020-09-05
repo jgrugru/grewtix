@@ -3,13 +3,8 @@ __pycache__
 objects/__pycache__/*
 objects/__pycache__
 .pytest_cache
-data/tickets.csv
-data/currentTicketCount.txt
-data/test/*
-data/test
 .vscode/
-config/dev.ini
-ticket_tracking_system/config/dev.ini
-config/*
-config
+data/*
+data/
 
+ttysystem/db.sqlite3

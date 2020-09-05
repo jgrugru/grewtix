@@ -10,3 +10,6 @@ data/test
 .vscode/
 config/dev.ini
 ticket_tracking_system/config/dev.ini
+config/*
+config
+

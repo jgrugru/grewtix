@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from django.utils import timezone, dateformat
 
 # Create your models here.
 
@@ -38,6 +38,9 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.ticketType.ticketType + '-' + str(self.id)
+
+    def how_many_days_old(self):
+        return int(dateformat.format(timezone.now(), 'd')) - int(dateformat.format(self.creation_date,'d'))
 
 class Attachment(models.Model): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)

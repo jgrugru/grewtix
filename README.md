@@ -7,8 +7,13 @@ This is the first project I have developed in Python. It started as a way to lea
 
 How to Run
 ----------
-Navigate to the *ttsystem* (Ticket Tracking System) dir and enter the command: *python manage.py runserver*
+Navigate to the *ttsystem* (Ticket Tracking System) dir and enter the following commands: 
+ * *python manage.py makemigrations*
+ * *python manage.py migrate*
+ * *python manage.py runserver*
 
 Features to add
 ---------------
- * *migrate to Django framework. -- in progress*
+ * <strike>migrate to Django framework.</strike>
+ * <strike>add owner field in ticket model</strike>
+ 

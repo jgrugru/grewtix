@@ -1,5 +1,7 @@
 from django.db import models
-from django.utils import timezone
+from django.utils import timezone, dateformat
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -35,9 +37,14 @@ class Ticket(models.Model):
     priority = models.ForeignKey(Priority, on_delete=models.CASCADE)
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     creation_date = models.DateTimeField('creation date')
+    creator = models.ForeignKey(User, related_name='creator', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.ticketType.ticketType + '-' + str(self.id)
+
+    def how_many_days_old(self):
+        return int(dateformat.format(timezone.now(), 'd')) - int(dateformat.format(self.creation_date,'d'))
 
 class Attachment(models.Model): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)

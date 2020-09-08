@@ -14,4 +14,6 @@ Navigate to the *ttsystem* (Ticket Tracking System) dir and enter the following 
 
 Features to add
 ---------------
- * *migrate to Django framework. -- in progress*
+ * <strike>migrate to Django framework.</strike>
+ * <strike>add owner field in ticket model</strike>
+ 

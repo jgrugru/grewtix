@@ -7,7 +7,7 @@ This is the first project I have developed in Python. It started as a way to lea
 
 How to Run
 ----------
-Navigate to the *ttsystem* (Ticket Tracking System) dir and enter the following commands command: 
+Navigate to the *ttsystem* (Ticket Tracking System) dir and enter the following commands: 
  * *python manage.py makemigrations*
  * *python manage.py migrate*
  * *python manage.py runserver*

@@ -16,4 +16,9 @@ Features to add
 ---------------
  * <strike>migrate to Django framework.</strike>
  * <strike>add owner field in ticket model</strike>
+ * add navbar
+ * setup unit tests
+ * create ticket edit page
+ * user generic views
+
  

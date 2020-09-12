@@ -5,3 +5,5 @@ objects/__pycache__
 .vscode/
 data/
 db.sqlite3
+.scannerwork/
+sonar-project.properties

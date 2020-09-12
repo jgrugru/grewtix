@@ -7,7 +7,15 @@
     <div class="jumbotron text-left bg-light">
 {% endif %}
     <h1>{{ticket}}</h1>
-    <p>Created by {{ ticket.creator.first_name }} {{ ticket.creator.last_name }}  {{ticket.how_many_days_old }} days ago.</p>
+    <p>Created by {{ ticket.creator.first_name }} {{ ticket.creator.last_name }} 
+    
+    
+    {% if ticket.how_many_days_old > 0 %}
+        {{ticket.how_many_days_old }} days ago.</p>
+    {% else %}
+        today.</p>
+    {% endif %}
+
 </div>
 {% comment %} {% for x in range(10) %}
 {{ str(x) }}

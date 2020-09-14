@@ -8,17 +8,12 @@
 </div>
 
 <div class="container">
-
-    <form>
-    {% csrf_token %}
-
-    <div class="form-group">
-        {% block content %}
-            <form method='POST'>
+    <div class="form-group"> 
+        {% block content %} 
+            <form method='POST'> {% csrf_token %}
                 {{ form.as_p }}
                 <input type='submit' value='Save'/>
             </form>
         {% endblock %}
     </div>
-    </form>
 </div>

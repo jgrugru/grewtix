@@ -14,7 +14,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published Tickets."""
-        return Ticket.objects.order_by('-creation_date')[:5]
+        return Ticket.objects.order_by('-created_at')[:5]
 
 def detail(request, ticket_id):
     ticket = get_object_or_404(Ticket, pk=ticket_id)
@@ -22,6 +22,7 @@ def detail(request, ticket_id):
 
 def ticket_create_view(request):
     form = TicketForm(request.POST or None)
+    print(form)
     if form.is_valid():
         form.save()
         form = TicketForm()

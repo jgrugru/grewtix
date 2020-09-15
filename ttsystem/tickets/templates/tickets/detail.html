@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> {% endcomment %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 {% if ticket.priority.priority == 'medium' %}
@@ -19,7 +19,7 @@
     {% endif %}
 
 </div>
- {% include 'tickets/navbar.html' %}
+ {% include 'tickets/header.html' %}
 
 <div class="container">
 

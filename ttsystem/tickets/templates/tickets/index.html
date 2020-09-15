@@ -1,10 +1,14 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 <div class="jumbotron text-center">
     <h1>Ticket Tracking System</h1>
-</div>
+</div> {% endcomment %}
+
+ {% include 'tickets/header.html' %}
 
 <div class="container">
+<br>
     {% if latest_ticket_list %}
         <ul class="list-group">
             {% for ticket in latest_ticket_list %}
@@ -15,4 +19,8 @@
     {% else %}
         <p>No tickets are available</p>
     {% endif %}
+<br>
+    <div class = "d-flex justify-content-end">
+        <a href="{% url 'tickets:create' %}" <i class="fas fa-plus-square fa-2x"></i></a>
+    </div>
 </div>

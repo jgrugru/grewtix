@@ -19,8 +19,8 @@ Features to add
  * <strike>add navbar</strike>
  * setup unit tests
  * create ticket edit page
- * user generic views
- * view all tickets by project (make the homepage dashboard)
+ * use generic views
+ * view all tickets by project (make it the homepage dashboard)
  * modify ticket create form page for easier use (assignee on the right side, creator field automatically added)
  * Create a simple reports page (total finished tickets, tickets finished by user)
  * Create admin page to modify profile settings
@@ -31,6 +31,8 @@ Long term goals
 ------------------------
  * Create teams/groups to view tickets inside teams/groups
  * Create customizable dashboard
- * Add an api for dynamic ticket creation
- 
+ * Add api for dynamic ticket creation
+ * Add api for list of tickets sorted by user/team/project/etc.
+ * Add time tracking for in progress tickets or manual entry of time
+
  

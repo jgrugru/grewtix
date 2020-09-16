@@ -1,27 +1,27 @@
 {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> {% endcomment %}
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{% if ticket.priority.priority == 'medium' %}
-    <div class="jumbotron text-left bg-warning">
-{% elif ticket.priority.priority == 'critical' %}
-    <div class="jumbotron text-left bg-danger">
-{% else %}
-    <div class="jumbotron text-left bg-light">
-{% endif %}
+
+
+ {% include 'tickets/header.html' %}
+
+<div class="container">
+    {% if ticket.priority.priority == 'medium' %}
+        <div class="text-left text-warning">
+    {% elif ticket.priority.priority == 'critical' or ticket.priority.priority == 'high' %}
+        <div class="text-left text-danger">
+    {% else %}
+        <div class="text-left text-primary">
+    {% endif %}
     <h1>{{ticket}}</h1>
     <p>Created by {{ ticket.creator.first_name }} {{ ticket.creator.last_name }} 
-    
     
     {% if ticket.how_many_days_old > 0 %}
         {{ticket.how_many_days_old }} days ago.</p>
     {% else %}
         today.</p>
     {% endif %}
-
-</div>
- {% include 'tickets/header.html' %}
-
-<div class="container">
+    </div>
 
     <form>
     {% csrf_token %}

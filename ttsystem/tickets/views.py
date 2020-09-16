@@ -16,13 +16,25 @@ class IndexView(generic.ListView):
         """Return the last five published Tickets."""
         return Ticket.objects.order_by('-created_at')[:5]
 
-def detail(request, ticket_id):
+def ticket_edit_view(request, ticket_id):
     ticket = get_object_or_404(Ticket, pk=ticket_id)
-    return render(request, 'tickets/detail.html', {'ticket': ticket})
+    data = {
+        'ticketType': ticket.ticketType,
+        'subject': ticket.subject,
+        'project': ticket.project,
+        'description': ticket.description,
+        'priority': ticket.priority,
+        'owner': ticket.owner,
+        'status': ticket.status,
+        # 'creation_date': ticket.created_at,
+        # 'creator': ticket.creator,
+    }
+    form = TicketForm(data)
+    return render(request, 'tickets/detail.html', {'form': form, 'ticket':ticket})
+    # return render(request, 'tickets/detail.html', {'ticket': ticket})             #this can be used for users with only read permissions
 
 def ticket_create_view(request):
     form = TicketForm(request.POST or None)
-    print(form)
     if form.is_valid():
         form.save()
         form = TicketForm()

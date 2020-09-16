@@ -4,21 +4,21 @@ from .models import Ticket
 class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
-        fields = "__all__"
+        # fields = "__all__"
         
-        # widgets = {
-        #     'class' : 'form-control'
-        # }
+        widgets = {
+        #     'subject' : forms.TextInput(attrs={"class": "form-control-plaintext bg-light"})
+            'description': forms.Textarea()
+        }
 
-        # fields = [
-        #     'ticketType',
-        #     'subject',
-        #     'project',
-        #     'description',
-        #     'priority',
-        #     'owner',
-        #     'status',
+        fields = [
+            'ticketType',
+            'subject',
+            'project',
+            'description',
+            'priority',
+            'status',
         #     'creation_date',
         #     'creator',
-        #     'owner',
-        # ]
+            'owner',
+        ]

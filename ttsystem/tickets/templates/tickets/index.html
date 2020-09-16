@@ -8,10 +8,10 @@
  {% include 'tickets/header.html' %}
 
 <div class="container">
-    {% if latest_ticket_list %}
+    {% if latest_ticket_list %} 
         <ul class="list-group">
             {% for ticket in latest_ticket_list %}
-            <li class="list-group-item"><a href="{% url 'tickets:detail' ticket.id %}">{{ ticket }}</a></li>
+            <li class="list-group-item"><a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }}</a></li>
             {% endfor %}
         </ul>
 

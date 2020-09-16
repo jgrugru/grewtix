@@ -8,7 +8,6 @@
  {% include 'tickets/header.html' %}
 
 <div class="container">
-<br>
     {% if latest_ticket_list %}
         <ul class="list-group">
             {% for ticket in latest_ticket_list %}
@@ -19,7 +18,7 @@
     {% else %}
         <p>No tickets are available</p>
     {% endif %}
-<br>
+
     <div class = "d-flex justify-content-end">
         <a href="{% url 'tickets:create' %}" <i class="fas fa-plus-square fa-2x"></i></a>
     </div>

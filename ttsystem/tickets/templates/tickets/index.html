@@ -4,7 +4,7 @@
     {% if latest_ticket_list %} 
         <ul class="list-group">
             {% for ticket in latest_ticket_list %}
-            <li class="list-group-item"><a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }}</a></li>
+            <li class="list-group-item"><a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a></li>
             {% endfor %}
         </ul>
 

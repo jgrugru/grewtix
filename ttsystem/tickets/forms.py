@@ -8,7 +8,8 @@ class TicketForm(forms.ModelForm):
         
         widgets = {
         #     'subject' : forms.TextInput(attrs={"class": "form-control-plaintext bg-light"})
-            'description': forms.Textarea()
+            'description': forms.Textarea(),
+            'creator': forms.HiddenInput(),
         }
 
         fields = [
@@ -18,7 +19,6 @@ class TicketForm(forms.ModelForm):
             'description',
             'priority',
             'status',
-        #     'creation_date',
-        #     'creator',
+            'creator',
             'owner',
         ]

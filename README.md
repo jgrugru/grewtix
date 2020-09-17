@@ -20,12 +20,16 @@ Features to add
  * setup unit tests
  * create ticket edit page
  * use generic views
+ * add comment functionality
+ * add attachment functionality
  * view all tickets by project (make it the homepage dashboard)
  * modify ticket create form page for easier use (assignee on the right side, creator field automatically added)
  * Create a simple reports page (total finished tickets, tickets finished by user)
  * Create admin page to modify profile settings
  * Create own user model and integrate into other models
  * setup two different types of user permissions: admin and user
+ * add reviewers to tickets
+ * add labels field to tickets
 
 Long term goals
 ------------------------

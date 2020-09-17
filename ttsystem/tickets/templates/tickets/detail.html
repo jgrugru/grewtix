@@ -3,7 +3,9 @@
 
 
 
- {% include 'tickets/header.html' %}
+{% include 'tickets/header.html' %}
+
+{% load widget_tweaks %}
 
 <div class="container">
     {% if ticket.priority.priority == 'medium' %}
@@ -29,44 +31,52 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Subject</label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.subject }}">
+            {% comment %} <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.subject }}"> {% endcomment %}
+            {% render_field form.subject class="form-control-plaintext bg-light" %}
         </div>
     </div>
     <div class="form-group row">
         <label for="" class="col-sm-2 col-form-label">Project</label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.project }}">
+            {% comment %} <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.project }}"> {% endcomment %}
+            {% render_field form.project class="form-control-dropdown bg-light" %}
         </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Description</label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.description }}">
+            {% comment %} <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.description }}"> {% endcomment %}
+            {% render_field form.description class="form-control-textarea bg-light" %}
         </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Priority</label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.priority }}">
+            {% comment %} <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.priority }}"> {% endcomment %}
+            {% render_field form.priority class="form-control-dropdown bg-light" %}
         </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Status</label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.status }}">
+            {% comment %} <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.status }}"> {% endcomment %}
+            {% render_field form.status class="form-control-dropdown bg-light" %}
         </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Creator</label>
         <div class="col-sm-10">
             <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.creator }}">
+            {% comment %} {{form.creator}} {% endcomment %}
         </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Owner</label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.owner }}">
+            {% comment %} <input type="text" readonly class="form-control-plaintext bg-light" value="{{ ticket.owner }}"> {% endcomment %}
+            {% render_field form.owner class="form-control-dropdown bg-light" %}
         </div>
     </div>
+
     </form>
 </div>

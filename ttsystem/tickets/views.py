@@ -4,7 +4,7 @@ from django.template import loader
 from django.views import generic 
 from django.urls import reverse
 from django.contrib.auth.models import User
-
+from django.views.generic.edit import CreateView
 
 from .forms import TicketForm
 from .models import Ticket
@@ -43,3 +43,14 @@ def ticket_create_view(request):
 
     user = get_object_or_404(User, pk=1)
     return render(request, 'tickets/ticket_create.html', {'form': form, 'user': user})
+
+
+class TicketCreate(CreateView):
+    model = Ticket
+    fields = ['ticketType', 'subject', 'project', 'description', 'priority', 'owner', 'status']
+## create comment action
+
+
+## create attachment action
+
+

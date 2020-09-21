@@ -17,19 +17,21 @@ Features to add
  * <strike>migrate to Django framework.</strike>
  * <strike>add owner field in ticket model</strike>
  * <strike>add navbar</strike>
+ * ticket's priority field should be limited to low, medium, high, critical. Remove priority model
  * setup unit tests
  * create ticket edit page
  * use generic views
  * add comment functionality
  * add attachment functionality
  * view all tickets by project (make it the homepage dashboard)
- * modify ticket create form page for easier use (assignee on the right side, creator field automatically added)
+ * <strike>modify ticket create form page for easier use (assignee on the right side, creator field automatically added)</strike>
  * Create a simple reports page (total finished tickets, tickets finished by user)
  * Create admin page to modify profile settings
  * Create own user model and integrate into other models
  * setup two different types of user permissions: admin and user
  * add reviewers to tickets
  * add labels field to tickets
+ * dynamically create title of page for new ticket EX: PROD-12
 
 Long term goals
 ------------------------

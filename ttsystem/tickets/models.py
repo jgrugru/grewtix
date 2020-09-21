@@ -41,9 +41,8 @@ class Ticket(TimeStampMixin):
     subject = models.CharField(max_length=75)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     description = models.CharField(max_length=1000, default='')
-    priority = models.ForeignKey(Priority, on_delete=models.CASCADE)
+    priority = models.ForeignKey(Priority, on_delete=models.CASCADE)   #needs to be removed and replaced with list
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
-    # creation_date = models.DateTimeField('creation date')
     creator = models.ForeignKey(User, related_name='creator', on_delete=models.CASCADE)
     owner = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE)
 
@@ -56,9 +55,8 @@ class Ticket(TimeStampMixin):
 class Attachment(TimeStampMixin): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     filepath = models.CharField(max_length=150)
-    # creationDate = models.DateTimeField('creation date')
 
 class Comment(TimeStampMixin): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
-    # creationDate = models.DateTimeField('creation date')
+

@@ -19,8 +19,8 @@ Features to add
  * <strike>add navbar</strike>
  * ticket's priority field should be limited to low, medium, high, critical. Remove priority model
  * setup unit tests
- * create ticket edit page
- * use generic views
+ * <strike>create ticket edit page</strike>
+ * <strike>use generic views</strike>
  * add comment functionality
  * add attachment functionality
  * view all tickets by project (make it the homepage dashboard)

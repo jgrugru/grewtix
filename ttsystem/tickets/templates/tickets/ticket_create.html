@@ -16,9 +16,9 @@
 
       <!-- Blog Entries Column -->
       <div class="col-md-8">
-        <h1 class="my-4">Create Ticket
-          <small>Enter the fields.</small>
-        </h1>
+        <h3 class="my-4">Create Ticket
+          <small>{% render_field form.ticketType class="form-control-dropdown bg-light" %}</small>
+        </h3>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Subject</label>
@@ -68,13 +68,6 @@
         <div class="card my-4">
           {% comment %} <h5 class="card-header">Search</h5> {% endcomment %}
             <div class="card-body">
-
-                <div class="form-group row">
-                    <label class="col col-form-label">Ticket Type</label>
-                    <div class="col">
-                        {% render_field form.ticketType class="form-control-dropdown bg-light" %}
-                    </div>
-                </div>
 
                 <div class="form-group row">
                     <label class="col col-form-label">Assignee</label>

@@ -40,7 +40,7 @@ class Ticket(TimeStampMixin):
     ticketType = models.ForeignKey(TicketType, on_delete=models.CASCADE)
     subject = models.CharField(max_length=75)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    description = models.CharField(max_length=1000, default='')
+    description = models.TextField(max_length=1000, default='')
     priority = models.ForeignKey(Priority, on_delete=models.CASCADE)   #needs to be removed and replaced with list
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     creator = models.ForeignKey(User, related_name='creator', on_delete=models.CASCADE)

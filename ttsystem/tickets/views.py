@@ -4,7 +4,7 @@ from django.template import loader
 from django.views import generic 
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from .forms import TicketForm
 from .models import Ticket
@@ -48,6 +48,17 @@ def ticket_create_view(request):
 class TicketCreate(CreateView):
     model = Ticket
     fields = ['ticketType', 'subject', 'project', 'description', 'priority', 'owner', 'status']
+
+
+class TicketUpdate(UpdateView):
+    model = Ticket 
+    fields = ['ticketType', 'subject', 'project', 'description', 'priority', 'owner', 'status']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse('tickets:index')
+
+        
 ## create comment action
 
 

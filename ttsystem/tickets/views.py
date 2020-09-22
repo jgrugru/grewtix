@@ -16,21 +16,22 @@ class IndexView(generic.ListView):
         """Return the last five published Tickets."""
         return Ticket.objects.order_by('-created_at')[:5]
 
-class TicketCreate(CreateView):
+class FormViews():
+    model = Ticket
+    form_class = TicketForm
+
+    def get_success_url(self):
+        return reverse('tickets:index')
+
+class TicketCreate(FormViews, CreateView):
     template_name = 'tickets/ticket_create_form.html'
     model = Ticket
     form_class = TicketForm
-    
-    def get_success_url(self):
-        return reverse('tickets:index')
 
-class TicketUpdate(UpdateView):
+class TicketUpdate(FormViews, UpdateView):
     model = Ticket 
     form_class = TicketForm
     template_name_suffix = '_update_form'
-
-    def get_success_url(self):
-        return reverse('tickets:index')
 
         
 ## create comment action

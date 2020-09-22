@@ -17,7 +17,8 @@ Features to add
  * <strike>migrate to Django framework.</strike>
  * <strike>add owner field in ticket model</strike>
  * <strike>add navbar</strike>
- * ticket's priority field should be limited to low, medium, high, critical. Remove priority model
+ * <strike>ticket's priority field should be limited to low, medium, high, critical.</strike> Remove priority model
+ * <strike>default of owner/assignee should be unassigned/null</strike>
  * setup unit tests
  * <strike>create ticket edit page</strike>
  * <strike>use generic views</strike>

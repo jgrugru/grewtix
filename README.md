@@ -20,6 +20,7 @@ Gru Tick is a ticket tracking system built through the Python (3.8.5) framework 
  2) Create a virtual environment with this command: 
  `virtualenv --python C:\Users\{user_name}\AppData\Local\Programs\Python\Python38\python.exe env` 
  Your path to the python.exe may look different.
+ 3) Navigate inside the folder where you created the virtual environment. Run the following command: `.\env\Scripts\activate`
  2) Run the following commands:
   - `$ pip install django==3.0.6`
   - `$ pip install django-widget-tweaks==1.4.8`

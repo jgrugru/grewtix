@@ -21,17 +21,17 @@ Gru Tick is a ticket tracking system built through the Python (3.8.5) framework 
  `virtualenv --python C:\Users\{user_name}\AppData\Local\Programs\Python\Python38\python.exe env` 
  Your path to the python.exe may look different.
  3) Navigate inside the folder where you created the virtual environment. Run the following command: `.\env\Scripts\activate`
- 2) Run the following commands:
+ 4) Run the following commands:
   - `$ pip install django==3.0.6`
   - `$ pip install django-widget-tweaks==1.4.8`
-3) Navigate to the *ttsystem* dir and enter the following commands: 
+ 5) Navigate to the *ttsystem* dir and enter the following commands: 
  - `$ python manage.py makemigrations tickets`
  - `$ python manage.py migrate`
  - Create a user so you can access the admin page: 
  `$ python manage.py createsuperuser`
  - `$ python manage.py runserver`
- 4) In your browser navigate to localhost:8000/admin. Create some tickets.
- 5) Once you create test data, feel free to navigate through the application.
+ 6) In your browser navigate to localhost:8000/admin. Create some tickets.
+ 7) Once you create test data, feel free to navigate through the application.
 
  * Installation
  * Configuration

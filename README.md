@@ -1,16 +1,37 @@
-Ticket Based Tracking System
-================================
+__Gru Tick__
+============
 
-Reason for development
-----------------------
-This is the first project I have developed in Python. It started as a way to learn and grow my skills with Python.
+ Introduction
+ ----------------
+Gru Tick is a ticket tracking system built through the Python (3.8.5) framework Django (3.0.6). Through Gru Ticket, you can create tickets for work/projects/teams and assign them as needed. Gru Tick is in the beginning stages of development so many features are coming soon. You can view progress at the bottom of this README.
 
-How to Run
-----------
-Navigate to the *ttsystem* (Ticket Tracking System) dir and enter the following commands: 
- * *python manage.py makemigrations*
- * *python manage.py migrate*
- * *python manage.py runserver*
+ Requirements
+ ----------------
+ - Python==3.8.5
+ - Django==3.0.6
+ - django-widget-tweaks==1.4.8
+ - asgiref==3.2.10
+ - pytz==2020.1
+ - sqlparse==0.3.1
+
+ How to Get Started
+ ----------------
+ 1) Once Python is installed, install virtualenv: `pip install virtualenv`
+ 2) Create a virtual environment with this command: 
+ `virtualenv --python C:\Users\{user_name}\AppData\Local\Programs\Python\Python38\python.exe env` 
+ Your path to the python.exe may look different.
+ 3) Navigate inside the folder where you created the virtual environment. Run the following command: `.\env\Scripts\activate`
+ 4) Run the following commands:
+  - `$ pip install django==3.0.6`
+  - `$ pip install django-widget-tweaks==1.4.8`
+ 5) Navigate to the *ttsystem* dir and enter the following commands: 
+ - `$ python manage.py makemigrations tickets`
+ - `$ python manage.py migrate`
+ - Create a user so you can access the admin page: 
+ `$ python manage.py createsuperuser`
+ - `$ python manage.py runserver`
+ 6) In your browser navigate to localhost:8000/admin. Create some tickets.
+ 7) Once you create test data, feel free to navigate through the application.
 
 Features to add
 ---------------
@@ -19,16 +40,17 @@ Features to add
  * <strike>add navbar</strike>
  * <strike>ticket's priority field should be limited to low, medium, high, critical.</strike> Remove priority model
  * <strike>default of owner/assignee should be unassigned/null</strike>
- * setup unit tests
  * <strike>create ticket edit page</strike>
  * <strike>use generic views</strike>
+ * <strike>modify ticket create form page for easier use (assignee on the right side, creator field automatically added)</strike>
+ * setup unit tests
+ * Create own user model and integrate into other models
  * add comment functionality
  * add attachment functionality
  * view all tickets by project (make it the homepage dashboard)
- * <strike>modify ticket create form page for easier use (assignee on the right side, creator field automatically added)</strike>
+
  * Create a simple reports page (total finished tickets, tickets finished by user)
  * Create admin page to modify profile settings
- * Create own user model and integrate into other models
  * setup two different types of user permissions: admin and user
  * add reviewers to tickets
  * add labels field to tickets
@@ -42,4 +64,12 @@ Long term goals
  * Add api for list of tickets sorted by user/team/project/etc.
  * Add time tracking for in progress tickets or manual entry of time
 
- 
+Reason for development
+----------------------
+This project started as a way to learn Python, but has turned into an ongoing project with the hopes of being a useful ticketing system. When I began this project, I had only worked with Youtrack, JetBrains ticketing system. You may be able to notice some similarities. 
+
+Sections to add to README
+--------------------------
+ * Troubleshooting
+ * FAQ
+ * Maintainers

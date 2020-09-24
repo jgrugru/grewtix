@@ -1,6 +1,8 @@
-__pycache__/
-objects/__pycache__/*
-objects/__pycache__
+
+*.pyc
+*.csv
+*.sqlite3
+
 .pytest_cache
 .vscode/
 data/

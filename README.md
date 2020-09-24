@@ -1,16 +1,32 @@
-Ticket Based Tracking System
-================================
+Gru Tick
+======
+ Introduction
+ ----------------
+Gru Tick is a ticket tracking system built through Django (v3.0.6). Through Gru Ticket, you can create tickets for work/projects/teams and assign them as needed. Gru Tick is in the beginning stages of development so many features are coming soon. You can view progress at the bottom of this README.
 
-Reason for development
-----------------------
-This is the first project I have developed in Python. It started as a way to learn and grow my skills with Python.
+ Requirements
+ ----------------
+ - Django==3.0.6
+ - django-widget-tweaks==1.4.8
 
-How to Run
-----------
+ How to Get Started
+ ----------------
+ * Install virtualenv and create virtual environment on local machine ```pip install virtualenv```
+ * 
 Navigate to the *ttsystem* (Ticket Tracking System) dir and enter the following commands: 
  * *python manage.py makemigrations*
  * *python manage.py migrate*
  * *python manage.py runserver*
+
+ * Installation
+ * Configuration
+ * Troubleshooting
+ * FAQ
+ * Maintainers
+
+Reason for development
+----------------------
+This project started as a way to learn Python, but has turned into an ongoing project with the hopes of being a useful ticketing system. When I began this project, I had only worked with Youtrack, JetBrains ticketing system. You may be able to notice some similarities. 
 
 Features to add
 ---------------

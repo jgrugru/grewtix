@@ -17,9 +17,13 @@ Gru Tick is a ticket tracking system built through Django (3.0.6). Through Gru T
   - `$ pip install django==3.0.6`
   - `$ pip install django-widget-tweaks==1.4.8`
 3) Navigate to the *ttsystem* dir and enter the following commands: 
- - `$ python manage.py makemigrations`
+ - `$ python manage.py makemigrations tickets`
  - `$ python manage.py migrate`
+ - Create a user so you can access the admin page: 
+ `$ python manage.py createsuperuser`
  - `$ python manage.py runserver`
+ 4) In your browser navigate to localhost:8000/admin. Create some mock tickets.
+ 5) Once you create some data, feel free to navigate through the application.
 
  * Installation
  * Configuration
@@ -61,3 +65,5 @@ Long term goals
  * Add api for dynamic ticket creation
  * Add api for list of tickets sorted by user/team/project/etc.
  * Add time tracking for in progress tickets or manual entry of time
+
+ 

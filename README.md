@@ -33,16 +33,6 @@ Gru Tick is a ticket tracking system built through the Python (3.8.5) framework 
  6) In your browser navigate to localhost:8000/admin. Create some tickets.
  7) Once you create test data, feel free to navigate through the application.
 
- * Installation
- * Configuration
- * Troubleshooting
- * FAQ
- * Maintainers
-
-Reason for development
-----------------------
-This project started as a way to learn Python, but has turned into an ongoing project with the hopes of being a useful ticketing system. When I began this project, I had only worked with Youtrack, JetBrains ticketing system. You may be able to notice some similarities. 
-
 Features to add
 ---------------
  * <strike>migrate to Django framework.</strike>
@@ -74,4 +64,12 @@ Long term goals
  * Add api for list of tickets sorted by user/team/project/etc.
  * Add time tracking for in progress tickets or manual entry of time
 
- 
+Reason for development
+----------------------
+This project started as a way to learn Python, but has turned into an ongoing project with the hopes of being a useful ticketing system. When I began this project, I had only worked with Youtrack, JetBrains ticketing system. You may be able to notice some similarities. 
+
+Sections to add to README
+--------------------------
+ * Troubleshooting
+ * FAQ
+ * Maintainers

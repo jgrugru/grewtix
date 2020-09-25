@@ -24,7 +24,7 @@ Gru Tick is a ticket tracking system built through the Python (3.8.5) framework 
  4) Run the following commands:
   - `$ pip install django==3.0.6`
   - `$ pip install django-widget-tweaks==1.4.8`
- 5) Navigate to the *ttsystem* dir and enter the following commands: 
+ 5) Navigate to the *grewtix* dir and enter the following commands: 
  - `$ python manage.py makemigrations tickets`
  - `$ python manage.py migrate`
  - Create a user so you can access the admin page: 

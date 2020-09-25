@@ -11,3 +11,4 @@ db.sqlite3
 migrations/
 migrations/*
 sonar-project.properties
+Archived/

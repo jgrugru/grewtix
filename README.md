@@ -13,7 +13,7 @@ Grewtix is a ticket tracking system built through the Python (3.8.5) framework D
  - asgiref==3.2.10
  - pytz==2020.1
  - sqlparse==0.3.1
-
+ 
  How to Get Started
  ----------------
  1) Once Python is installed, install virtualenv: `pip install virtualenv`

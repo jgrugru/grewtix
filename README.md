@@ -1,9 +1,9 @@
-__Gru Tick__
+__Grewtix__
 ============
 
  Introduction
  ----------------
-Gru Tick is a ticket tracking system built through the Python (3.8.5) framework Django (3.0.6). Through Gru Ticket, you can create tickets for work/projects/teams and assign them as needed. Gru Tick is in the beginning stages of development so many features are coming soon. You can view progress at the bottom of this README.
+Grewtix is a ticket tracking system built through the Python (3.8.5) framework Django (3.0.6). Through Grewtix, you can create tickets for work/projects/teams and assign them as needed. Grewtix is in the beginning stages of development so many features are coming soon. You can view progress at the bottom of this README.
 
  Requirements
  ----------------

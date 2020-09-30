@@ -4,10 +4,11 @@ pipeline {
         stage('build') {
             steps {
                 sh 'python --version'
-                sh ```
+                sh '''
                     echo "testing test"
                     ls -la
-                ```
+                '''
+
             }
         }
     }

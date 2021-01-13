@@ -4,7 +4,12 @@
     {% if latest_ticket_list %} 
         <ul class="list-group">
             {% for ticket in latest_ticket_list %}
-            <li class="list-group-item"><a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a></li>
+            <li class="list-group-item">
+                <a href="{%url 'tickets:delete' ticket.id %}">
+                     <i style="padding-right: 10px;" class="fas fa-trash"></i>
+                </a>
+                <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
+            </li>
             {% endfor %}
         </ul>
 
@@ -12,8 +17,9 @@
         <p>No tickets are available</p>
     {% endif %}
 
-    <div class = "d-flex justify-content-end">
-        <a href="{% url 'tickets:create' %}" <i class="fas fa-plus-square fa-2x"></i></a>
+    <!-- <div class = "d-flex justify-content-end"> -->
+    <div class="container">
+        <a href="{% url 'tickets:create' %}"><i class="fas fa-plus-square fa-2x"></i></a>
     </div>
 </div>
 

@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views import generic 
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .forms import TicketForm
 from .models import Ticket
@@ -32,6 +32,10 @@ class TicketUpdate(FormViews, UpdateView):
     model = Ticket 
     form_class = TicketForm
     template_name_suffix = '_update_form'
+
+class TicketDelete(DeleteView):
+    model = Ticket
+    success_url = "/"
 
         
 ## create comment action

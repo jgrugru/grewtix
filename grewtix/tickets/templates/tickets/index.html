@@ -9,6 +9,14 @@
                      <i style="padding-right: 10px;" class="fas fa-trash"></i>
                 </a>
                 <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
+                <p>Created by {{ ticket.creator }} 
+    
+                    {% if ticket.how_many_days_old > 0 %}
+                        {{ticket.how_many_days_old }} days ago.
+                    {% else %}
+                        today.
+                    {% endif %}
+                Assigned to {{ticket.owner}}</p>
             </li>
             {% endfor %}
         </ul>

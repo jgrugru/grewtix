@@ -8,5 +8,6 @@ urlpatterns = [
     path('create/', views.TicketCreate.as_view(), name='create'),
     path('edit/<int:pk>', views.TicketUpdate.as_view(), name='edit'),
     path('<pk>/delete/', views.TicketDelete.as_view(), name='delete'),
+    path('assign/<int:ticket>', views.TicketAssign, name="assign"),
     # path('<int:ticket_id>/', views.ticket_edit_view, name='edit')
 ]

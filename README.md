@@ -41,7 +41,9 @@ Features to add
  * <strike>use generic views</strike>
  * <strike>modify ticket create form page for easier use (assignee on the right side, creator field automatically added)</strike>
  * setup unit tests
- * Create own user model and integrate into other models
+ * <strike>Create own user model and integrate into other models</strike>
+ * create a claim button for the active user to claim unassigned tickets
+ * create a personal queue
  * add comment functionality
  * add attachment functionality
  * view all tickets by project (make it the homepage dashboard)
@@ -64,9 +66,3 @@ Long term goals
 Reason for development
 ----------------------
 This project started as a way to learn Python, but has turned into an ongoing project with the hopes of being a useful ticketing system. When I began this project, I had only worked with Youtrack, JetBrains ticketing system. You may be able to notice some similarities. 
-
-Sections to add to README
---------------------------
- * Troubleshooting
- * FAQ
- * Maintainers

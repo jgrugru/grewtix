@@ -8,8 +8,6 @@ from django.http import HttpResponse
 from .forms import TicketForm
 from .models import Ticket
 
-
-
 #queue for created by user
 #for owned by user
 #unassigned
@@ -27,20 +25,22 @@ class IndexView(generic.ListView):
     template_name = 'tickets/index.html'
     context_object_name = 'ticket_list'
 
-
 class RecentlyCreatedView(IndexView):
     def get_queryset(self):
         """Return the last five published Tickets."""
         return Ticket.objects.order_by('-created_at')[:9]
 
-class OwnedView(IndexView):
-    pass
+class OwnedByUserView(IndexView):
+    def get_queryset(self):
+        return Ticket.objects.filter(owner=self.request.user.id)
 
-class CreatedView(IndexView):
-    pass
+class CreatedByUserView(IndexView):
+    def get_queryset(self):
+        return Ticket.objects.filter(creator=self.request.user.id)
 
 class UnassignedView(IndexView):
-    pass
+    def get_queryset(self):
+        return Ticket.objects.filter(owner=None)
 
 class FormViews():
     model = Ticket
@@ -51,7 +51,6 @@ class FormViews():
 
 class TicketCreate(FormViews, CreateView):
     template_name = 'tickets/ticket_create_form.html'
-
 
 class TicketUpdate(FormViews, UpdateView):
 

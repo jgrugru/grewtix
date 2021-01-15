@@ -10,22 +10,37 @@ from .models import Ticket
 
 
 
+#queue for created by user
+#for owned by user
+#unassigned
+
 def TicketAssign(request, ticket):
     print("----------------")
     ticket = Ticket.objects.get(id=ticket)
     print(request.user.id)
     ticket.owner = User.objects.get(id=request.user.id)
     ticket.save()
-    return IndexView.as_view()(request)
+    return RecentlyCreatedView.as_view()(request)
 
 # Create your views here.
 class IndexView(generic.ListView):
     template_name = 'tickets/index.html'
-    context_object_name = 'latest_ticket_list'
+    context_object_name = 'ticket_list'
 
+
+class RecentlyCreatedView(IndexView):
     def get_queryset(self):
         """Return the last five published Tickets."""
         return Ticket.objects.order_by('-created_at')[:9]
+
+class OwnedView(IndexView):
+    pass
+
+class CreatedView(IndexView):
+    pass
+
+class UnassignedView(IndexView):
+    pass
 
 class FormViews():
     model = Ticket

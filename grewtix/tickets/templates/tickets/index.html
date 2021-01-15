@@ -6,9 +6,9 @@
 </head> 
 
 <div class="container">
-    {% if latest_ticket_list %} 
+    {% if ticket_list %} 
         <ul class="list-group">
-            {% for ticket in latest_ticket_list %}
+            {% for ticket in ticket_list %}
             <li class="list-group-item">
                 <a href="{%url 'tickets:assign' ticket.id %}">
                     <i style="padding-right: 10px;" class="fas fa-user-check"></i>
@@ -22,7 +22,12 @@
                 <p>Created by {{ ticket.creator }} 
     
                     {% if ticket.how_many_days_old > 0 %}
-                        {{ticket.how_many_days_old }} days ago.
+                        {{ticket.how_many_days_old }}
+                        {% if ticket.how_many_days_old > 1 %}
+                            days ago.
+                        {% else %}
+                            day ago.
+                        {% endif %}
                     {% else %}
                         today.
                     {% endif %}

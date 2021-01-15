@@ -1,11 +1,22 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.views import generic 
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.http import HttpResponse
 
 from .forms import TicketForm
 from .models import Ticket
+
+
+
+def TicketAssign(request, ticket):
+    print("----------------")
+    ticket = Ticket.objects.get(id=ticket)
+    print(request.user.id)
+    ticket.owner = User.objects.get(id=request.user.id)
+    ticket.save()
+    return IndexView.as_view()(request)
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -14,7 +25,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published Tickets."""
-        return Ticket.objects.order_by('-created_at')[:5]
+        return Ticket.objects.order_by('-created_at')[:9]
 
 class FormViews():
     model = Ticket
@@ -25,19 +36,15 @@ class FormViews():
 
 class TicketCreate(FormViews, CreateView):
     template_name = 'tickets/ticket_create_form.html'
-    model = Ticket
-    form_class = TicketForm
+
 
 class TicketUpdate(FormViews, UpdateView):
-    model = Ticket 
-    form_class = TicketForm
+
     template_name_suffix = '_update_form'
 
-class TicketDelete(DeleteView):
-    model = Ticket
-    success_url = "/"
+class TicketDelete(FormViews, DeleteView):
+    pass
 
-        
 ## create comment action
 
 

@@ -1,13 +1,23 @@
 {% include 'tickets/design/header.html' %}
 
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head> 
+
 <div class="container">
     {% if latest_ticket_list %} 
         <ul class="list-group">
             {% for ticket in latest_ticket_list %}
             <li class="list-group-item">
+                <a href="{%url 'tickets:assign' ticket.id %}">
+                    <i style="padding-right: 10px;" class="fas fa-user-check"></i>
+                </a>
                 <a href="{%url 'tickets:delete' ticket.id %}">
                      <i style="padding-right: 10px;" class="fas fa-trash"></i>
                 </a>
+
+
                 <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
                 <p>Created by {{ ticket.creator }} 
     

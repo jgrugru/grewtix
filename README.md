@@ -32,25 +32,16 @@ Grewtix is a ticket tracking system built through the Python (3.8.5) framework D
 
 Features to add
 ---------------
- * <strike>migrate to Django framework.</strike>
- * <strike>add owner field in ticket model</strike>
- * <strike>add navbar</strike>
- * <strike>ticket's priority field should be limited to low, medium, high, critical.</strike> Remove priority model
- * <strike>default of owner/assignee should be unassigned/null</strike>
- * <strike>create ticket edit page</strike>
- * <strike>use generic views</strike>
- * <strike>modify ticket create form page for easier use (assignee on the right side, creator field automatically added)</strike>
+ * UI design overhaul: give design to login, logout, and other random pages. Redesign ticket form and index, make it user friendly
+ * create a dockerfile to run this application
+ * setup the ticket claim button through ajax, make the call asynchronously 
+ * limit viewability if not logged in
  * setup unit tests
- * <strike>Create own user model and integrate into other models</strike>
- * create a claim button for the active user to claim unassigned tickets
- * create a personal queue
  * add comment functionality
  * add attachment functionality
  * view all tickets by project (make it the homepage dashboard)
-
  * Create a simple reports page (total finished tickets, tickets finished by user)
- * Create admin page to modify profile settings
- * setup two different types of user permissions: admin and user
+ * Create a profile page
  * add reviewers to tickets
  * add labels field to tickets
  * dynamically create title of page for new ticket EX: PROD-12

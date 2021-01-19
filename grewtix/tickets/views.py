@@ -6,26 +6,35 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 
 from .forms import TicketForm
-from .models import Ticket
-
-
+from .models import Ticket, Comment
 
 def TicketAssign(request, ticket):
-    print("----------------")
     ticket = Ticket.objects.get(id=ticket)
-    print(request.user.id)
     ticket.owner = User.objects.get(id=request.user.id)
     ticket.save()
-    return IndexView.as_view()(request)
+    return RecentlyCreatedView.as_view()(request)
 
 # Create your views here.
 class IndexView(generic.ListView):
     template_name = 'tickets/index.html'
-    context_object_name = 'latest_ticket_list'
+    context_object_name = 'ticket_list'
 
+class RecentlyCreatedView(IndexView):
     def get_queryset(self):
         """Return the last five published Tickets."""
         return Ticket.objects.order_by('-created_at')[:9]
+
+class OwnedByUserView(IndexView):
+    def get_queryset(self):
+        return Ticket.objects.filter(owner=self.request.user.id)
+
+class CreatedByUserView(IndexView):
+    def get_queryset(self):
+        return Ticket.objects.filter(creator=self.request.user.id)
+
+class UnassignedView(IndexView):
+    def get_queryset(self):
+        return Ticket.objects.filter(owner=None)
 
 class FormViews():
     model = Ticket
@@ -37,10 +46,13 @@ class FormViews():
 class TicketCreate(FormViews, CreateView):
     template_name = 'tickets/ticket_create_form.html'
 
-
 class TicketUpdate(FormViews, UpdateView):
 
     template_name_suffix = '_update_form'
+
+    # def getCommentsForTicket(self):
+    #     return Comment.objects.filter(ticketID=self.request.Ticket.id)
+
 
 class TicketDelete(FormViews, DeleteView):
     pass

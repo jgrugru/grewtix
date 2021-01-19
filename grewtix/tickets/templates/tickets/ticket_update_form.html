@@ -5,4 +5,16 @@
         {% include 'tickets/ticket_form_template.html' %} 
 
     </form>
+
+    <div class="container">
+        <ul class="list-group">
+            {% for x in ticket.get_comments %}
+            <li class="list-group-item">
+                <p>{{ x }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+            
+
 </div>

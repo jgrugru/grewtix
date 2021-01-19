@@ -67,6 +67,9 @@ class Ticket(TimeStampMixin):
     def how_many_days_old(self):
         return int(dateformat.format(timezone.now(), 'd')) - int(dateformat.format(self.created_at,'d'))
 
+    def get_comments(self):
+        return Comment.objects.filter(ticketID=self.id)
+
 class Attachment(TimeStampMixin): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     filepath = models.CharField(max_length=150)
@@ -74,4 +77,8 @@ class Attachment(TimeStampMixin): #1 to many
 class Comment(TimeStampMixin): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
+    creator = models.ForeignKey(User, related_name='creator', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.comment
 

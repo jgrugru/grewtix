@@ -6,16 +6,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 
 from .forms import TicketForm
-from .models import Ticket
-
-#queue for created by user
-#for owned by user
-#unassigned
+from .models import Ticket, Comment
 
 def TicketAssign(request, ticket):
-    print("----------------")
     ticket = Ticket.objects.get(id=ticket)
-    print(request.user.id)
     ticket.owner = User.objects.get(id=request.user.id)
     ticket.save()
     return RecentlyCreatedView.as_view()(request)
@@ -55,6 +49,10 @@ class TicketCreate(FormViews, CreateView):
 class TicketUpdate(FormViews, UpdateView):
 
     template_name_suffix = '_update_form'
+
+    # def getCommentsForTicket(self):
+    #     return Comment.objects.filter(ticketID=self.request.Ticket.id)
+
 
 class TicketDelete(FormViews, DeleteView):
     pass

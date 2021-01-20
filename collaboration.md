@@ -17,3 +17,10 @@ Other things to note
   will require moving the parts between the brackets.
  * The majority of the html is currently using bootstrap. I have cdn referenced in the top of the header.html file.
  * I am I also using font awesome for all the fonts; the cdn is in the header.html file.
+
+
+Design
+================
+ * You have total freedom on how you would like to design this.
+ * When planning this, I was trying to mimic youtrack, so there are some similiraties.
+   * Mimicking the design of youtrack may be a good starting point for designing this project. I don't have a preference either way, but this may help get the ball rolling.

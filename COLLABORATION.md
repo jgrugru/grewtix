@@ -24,9 +24,9 @@ Other things to note
  * I am I also using font awesome for all the fonts; the cdn is in the header.html file.
  * I have also created different queues (personal queue for the user logged in, queues of all unassigned tickets, and a queue for all tickets created by user)
    * In Django you can reference these files in any html file with
-      * <a href="{% url 'tickets:myqueue' %}">
-      * <a href="{% url 'tickets:unassigned_queue' %}">
-      * <a href="{% url 'tickets:created_by_user_queue' %}">
+      * href="{% url 'tickets:my_queue' %}
+      * href="{% url 'tickets:unassigned_queue' %}
+      * href="{% url 'tickets:created_by_user_queue' %}
 
 
 Design

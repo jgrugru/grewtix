@@ -12,29 +12,36 @@ def TicketAssign(request, ticket):
     ticket = Ticket.objects.get(id=ticket)
     ticket.owner = User.objects.get(id=request.user.id)
     ticket.save()
-    return RecentlyCreatedView.as_view()(request)
+    return CreatedByUserView.as_view()(request)
+
+def index(request):
+    return render(request, 'tickets/index.html')
 
 # Create your views here.
-class IndexView(generic.ListView):
-    template_name = 'tickets/index.html'
+class TicketListView(generic.ListView):
+    template_name = 'tickets/ticket_display_queryset.html'
     context_object_name = 'ticket_list'
 
-class RecentlyCreatedView(IndexView):
+class RecentlyCreatedView(TicketListView):
     def get_queryset(self):
         """Return the last five published Tickets."""
-        return Ticket.objects.order_by('-created_at')[:9]
+        return Ticket.objects.order_by('-created_at')[:4]
 
-class OwnedByUserView(IndexView):
+class OwnedByUserView(TicketListView):
     def get_queryset(self):
         return Ticket.objects.filter(owner=self.request.user.id)
 
-class CreatedByUserView(IndexView):
+class CreatedByUserView(TicketListView):
     def get_queryset(self):
         return Ticket.objects.filter(creator=self.request.user.id)
 
-class UnassignedView(IndexView):
+class UnassignedView(TicketListView):
     def get_queryset(self):
         return Ticket.objects.filter(owner=None)
+
+class AllTicketsView(TicketListView):
+    def get_queryset(self):
+        return Ticket.objects.all()
 
 class FormViews():
     model = Ticket

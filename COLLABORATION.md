@@ -22,6 +22,11 @@ Other things to note
       * <em>Ex. {% for ticket in ticket_list %}</em>
  * The majority of the html is currently using bootstrap. The cdn is referenced in the top of the header.html file.
  * I am I also using font awesome for all the fonts; the cdn is in the header.html file.
+ * I have also created different queues (personal queue for the user logged in, queues of all unassigned tickets, and a queue for all tickets created by user)
+   * In Django you can reference these files in any html file with
+      * href="{% url 'tickets:my_queue' %}
+      * href="{% url 'tickets:unassigned_queue' %}
+      * href="{% url 'tickets:created_by_user_queue' %}
 
 
 Design

@@ -1,11 +1,13 @@
+{% load static %}
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link type='text/css' rel="stylesheet" href="{% static 'tickets/css/main.css' %}">
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <div class="container">
-  {% comment %} {% load static %} {% endcomment %}
     <a class="navbar-brand" href="{% url 'tickets:index' %}">
-          {% comment %} <img src="{% static 'tickets/images/logo1.png' %}" alt=""> {% endcomment %}
       <i class="fas fa-desktop fa-lg" aria-hidden="true"></i>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +24,7 @@
           <a class="nav-link" href="#">Reports</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Admin</a>
+          <a class="nav-link" href="/admin">Admin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Account</a>

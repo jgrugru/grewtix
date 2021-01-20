@@ -5,8 +5,8 @@ The goal is to work together on projects down the road. This will hopefully be a
 Location of files
 ================
  * All the main html files will be found in this folder -- index, create, edit pages, as well as the footer/header: grewtix/tickets/templates/tickets
-    * these files will need redesigned,css added, etc
-All the files without any current design -- login, logout, delete_confirm, password_reset, etc -- are found here: grewtix/templates/registration
+    * these files will need redesigned, css added, etc
+ * All the files without any current design -- login, logout, delete_confirm, password_reset, etc -- are found here: grewtix/templates/registration
  * The ticket_confirm_delete.html is found here: grewtix/tickets/templates/tickets/ticket_confirm_delete.html
 The css file that will be used is found at this location: grewtix/tickets/static/tickets/css/main.css
  * Feel free to make more css files if needed.

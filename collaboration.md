@@ -4,7 +4,7 @@ The goal is to work together on projects down the road. This will hopefully be a
 
 Development process
 ================
-The development process will start with the repo being cloned. Please create a new branch that you will work under (ex. AveryS, TomC). Once you are finished with your designs, create a pull request to merge to master.
+The development process will start with the repo being cloned. Please create a new branch that you will work under (ex. AveryS, TomC). Once you are finished with your designs, create a pull request to merge to the <em>develop-redesign</em> branch.
 
 Location of files
 ================

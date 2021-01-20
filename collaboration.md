@@ -19,6 +19,7 @@ Other things to note
 ================
  * All functionality should already be included in the html pages. To move certain pieces that interact with the backend
   will require moving the parts between the brackets.
+      * <em>Ex. {% for ticket in ticket_list %}</em>
  * The majority of the html is currently using bootstrap. The cdn is referenced in the top of the header.html file.
  * I am I also using font awesome for all the fonts; the cdn is in the header.html file.
 

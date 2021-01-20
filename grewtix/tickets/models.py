@@ -77,7 +77,7 @@ class Attachment(TimeStampMixin): #1 to many
 class Comment(TimeStampMixin): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500)
-    creator = models.ForeignKey(User, related_name='creator', on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comment

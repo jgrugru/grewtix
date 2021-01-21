@@ -57,43 +57,5 @@ class TicketUpdate(FormViews, UpdateView):
 
     template_name_suffix = '_update_form'
 
-    # def getCommentsForTicket(self):
-    #     return Comment.objects.filter(ticketID=self.request.Ticket.id)
-
-
 class TicketDelete(FormViews, DeleteView):
     pass
-
-## create comment action
-
-
-## create attachment action
-
-
-
-# def ticket_edit_view(request, ticket_id):
-#     ticket = get_object_or_404(Ticket, pk=ticket_id)
-#     data = {
-#         'ticketType': ticket.ticketType,
-#         'subject': ticket.subject,
-#         'project': ticket.project,
-#         'description': ticket.description,
-#         'priority': ticket.priority,
-#         'owner': ticket.owner,
-#         'status': ticket.status,
-#         # 'creation_date': ticket.created_at,
-#         # 'creator': ticket.creator,
-#     }
-#     form = TicketForm(data)
-#     return render(request, 'tickets/detail.html', {'form': form, 'ticket':ticket})
-    # return render(request, 'tickets/detail.html', {'ticket': ticket})             #this can be used for users with only read permissions
-
-# def ticket_create_view(request):
-#     form = TicketForm(request.POST or None)
-#     if form.is_valid():
-#         form.save()
-#         form = TicketForm()
-
-#     user = get_object_or_404(User, pk=1)
-#     return render(request, 'tickets/ticket_create.html', {'form': form, 'user': user})
-

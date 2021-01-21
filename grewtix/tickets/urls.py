@@ -16,3 +16,12 @@ urlpatterns = [
     path('assign/<int:ticket>', views.TicketAssign, name="assign"),
     # path('<int:ticket_id>/', views.ticket_edit_view, name='edit')
 ]
+
+
+############
+#Add regex to dynamically create view based on ticket type
+    # obj = request
+    # for attr in dir(obj):
+    #     print("obj.%s = %r" % (attr, getattr(obj, attr)))
+    # print(obj.path)
+    ####request.path holds the get request from the url

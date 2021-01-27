@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from model_bakery import baker
 from django.urls import reverse
+from datetime import timedelta
+from django.utils import timezone
 
 user_test_password = '12345'
 
@@ -19,10 +21,13 @@ def create_ticket(ticket_subject, owner, creator):
     x.creator = creator
     x.subject = ticket_subject
     x.save()
-    # print(x.subject, x.creator, x.owner, x.created_at)
-    # print(x.ticketType, x.subject, x.project, x.description, x.priority, x.status, x.creator, x.owner)
     return x
- 
+
+def create_comment_attached_to_ticket(ticket):
+    comment = baker.make("Comment")
+    comment.ticketID = ticket
+    comment.save()
+    return comment
 
 class test_login(TestCase):
 
@@ -38,16 +43,31 @@ class test_features(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Unassigned Queue")
 
+    def test_tickets_age(self):
+        ticket = baker.make("Ticket")
+        ticket.save()
+        response = Client().get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "today.")              #test that the ticket was created today.
+        ticket.created_at = timezone.now() - timedelta(days=1)
+        ticket.save()
+        response = Client().get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "day ago.")            #test that the ticket was created 1 day ago.
+        ticket.created_at = timezone.now() - timedelta(days=2)
+        ticket.save()
+        response = Client().get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "days ago.")           #test that the ticket was created 2 days ago.
+
+
 class test_ticket_model(TestCase):
     
     def test_get_comments(self):
         ticket = baker.make("Ticket")
         ticket.save()
         self.assertIs(ticket.get_comments(), None)          #Test without a comment, expected result is None
-        comment = baker.make("Comment")
-        comment.ticketID = ticket
-        comment.save()
+        comment = create_comment_attached_to_ticket(ticket)
         self.assertTrue(comment in ticket.get_comments())   #Test with a comment, expected result is comment to be returned in queryset
+        response = Client().get(reverse('tickets:edit', kwargs={'pk': ticket.id}))
+        self.assertContains(response, comment.comment)      #Test that the comment appears in the ticket edit page.
 
 class test_ticket_querysets(TestCase):
 
@@ -70,6 +90,7 @@ class test_ticket_querysets(TestCase):
         response = self.client.get(reverse('tickets:owned_by_user_queue'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'testOwner')
+        self.assertContains(response, "today")   #This needs its own test. Test to see if day/days/today is coming out correctly in html
 
     def test_owned_by_user_queue_without_ticket(self):
         self.setup_without_ticket()
@@ -125,9 +146,6 @@ class test_ticket_querysets(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'No tickets are available')
 
-
-        # for z in Ticket.objects.all():
-        #     print("****************&&&&&&&&&&&&&&$$$$$$$$$$$$$$$$$$", z.owner)
-        #obj = response
+        # obj = response
         # for attr in dir(obj):
         #     print("obj.%s = %r" % (attr, getattr(obj, attr)))

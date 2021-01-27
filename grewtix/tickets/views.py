@@ -29,19 +29,19 @@ class RecentlyCreatedView(TicketListView):
 
 class OwnedByUserView(TicketListView):
     def get_queryset(self):
-        return Ticket.objects.filter(owner=self.request.user.id)
+        return Ticket.objects.filter(owner=self.request.user.id).order_by('-created_at')
 
 class CreatedByUserView(TicketListView):
     def get_queryset(self):
-        return Ticket.objects.filter(creator=self.request.user.id)
+        return Ticket.objects.filter(creator=self.request.user.id).order_by('-created_at')
 
 class UnassignedView(TicketListView):
     def get_queryset(self):
-        return Ticket.objects.filter(owner=None)
+        return Ticket.objects.filter(owner=None).order_by('-created_at')
 
 class AllTicketsView(TicketListView):
     def get_queryset(self):
-        return Ticket.objects.all()
+        return Ticket.objects.all().order_by('-created_at')
 
 class FormViews():
     model = Ticket

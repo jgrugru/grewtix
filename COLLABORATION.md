@@ -45,3 +45,4 @@ Here's a pic of the home page queue on youtrack:
 Features to add
 ================
 List any feature you would like to see added here.
+- add a "coming soon" page

@@ -68,7 +68,11 @@ class Ticket(TimeStampMixin):
         return int(dateformat.format(timezone.now(), 'd')) - int(dateformat.format(self.created_at,'d'))
 
     def get_comments(self):
-        return Comment.objects.filter(ticketID=self.id)
+        queryset = Comment.objects.filter(ticketID=self.id)
+        if queryset:
+            return queryset
+        else:
+            return None
 
 class Attachment(TimeStampMixin): #1 to many
     ticketID = models.ForeignKey(Ticket, on_delete=models.CASCADE)

@@ -6,43 +6,26 @@
 </head> 
 
 <div class="container">
-    {% if ticket_list %} 
-        <ul class="list-group">
-            {% for ticket in ticket_list %}
-            <li class="list-group-item">
-                <a href="{%url 'tickets:assign' ticket.id %}">
-                    <i style="padding-right: 10px;" class="fas fa-user-check"></i>
-                </a>
-                <a href="{%url 'tickets:delete' ticket.id %}">
-                     <i style="padding-right: 10px;" class="fas fa-trash"></i>
-                </a>
+   <div class="list-group">
+       <li class="list-group-item">
+            <a href="{% url 'tickets:unassigned_queue' %}"><button type="button" class="btn btn-primary">Unassigned Queue</button></a>
+       </li>
+       <li class="list-group-item">
+            <a href="{% url 'tickets:owned_by_user_queue' %}"><button type="button" class="btn btn-primary">My Queue</button></a>
+       </li>
+       <li class="list-group-item">
+            <a href="{% url 'tickets:created_by_user_queue' %}"><button type="button" class="btn btn-primary">Created By Me Queue</button></a>
+       </li>
+        <li class="list-group-item">
+            <a href="{% url 'tickets:recently_created_queue' %}"><button type="button" class="btn btn-primary">Recently Created Queue</button></a>
+        </li>
+        <li class="list-group-item">
+            <a href="{% url 'tickets:all_ticket_queue' %}"><button type="button" class="btn btn-primary">All Tickets Queue</button></a>
+        </li>
+   </div>
+   <br>
+   <a href="{% url 'tickets:create' %}"><button type="button" class="btn btn-primary">New Ticket</button></a>
 
 
-                <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
-                <p>Created by {{ ticket.creator }} 
-    
-                    {% if ticket.how_many_days_old > 0 %}
-                        {{ticket.how_many_days_old }}
-                        {% if ticket.how_many_days_old > 1 %}
-                            days ago.
-                        {% else %}
-                            day ago.
-                        {% endif %}
-                    {% else %}
-                        today.
-                    {% endif %}
-                Assigned to {{ticket.owner}}</p>
-            </li>
-            {% endfor %}
-        </ul>
-
-    {% else %}
-        <p>No tickets are available</p>
-    {% endif %}
-
-    <!-- <div class = "d-flex justify-content-end"> -->
-    <div class="container">
-        <a href="{% url 'tickets:create' %}"><i class="fas fa-plus-square fa-2x"></i></a>
-    </div>
 </div>
 

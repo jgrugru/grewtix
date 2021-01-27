@@ -42,7 +42,7 @@ Here's a pic of the home page queue on youtrack:
  * I have still have plenty of features missing. For example, if trying to design a search bar, feel free to design the search bar. That feature will be added later, but the html can be added now. 
  * While designing, if you come up with other features that should be added: new icons, buttons, etc, please add them to your branch's collobaration.md below.
  
- Features to add
- ================
+Features to add
+================
 List any feature you would like to see added here.
- 
+- add a "coming soon" page

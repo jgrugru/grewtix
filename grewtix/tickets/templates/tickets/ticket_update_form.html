@@ -7,6 +7,10 @@
     </form>
 
     <div class="container">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Comments</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
         <ul class="list-group">
             {% for x in ticket.get_comments %}
             <li class="list-group-item">

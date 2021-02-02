@@ -36,7 +36,6 @@ Features to add
  * create a dockerfile to run this application
  * setup the ticket claim button through ajax, make the call asynchronously 
  * limit viewability if not logged in
- * setup unit tests
  * add comment functionality
  * add attachment functionality
  * view all tickets by project (make it the homepage dashboard)
@@ -44,7 +43,6 @@ Features to add
  * Create a profile page
  * add reviewers to tickets
  * add labels field to tickets
- * dynamically create title of page for new ticket EX: PROD-12
 
 Long term goals
 ------------------------

@@ -9,33 +9,32 @@
     {% if ticket_list %} 
         <ul class="list-group">
             {% for ticket in ticket_list %}
-            <li class="list-group-item">
-                <a href="{%url 'tickets:assign' ticket.id %}">
-                    <i style="padding-right: 10px;" class="fas fa-user-check"></i>
-                </a>
-                <a href="{%url 'tickets:delete' ticket.id %}">
-                     <i style="padding-right: 10px;" class="fas fa-trash"></i>
-                </a>
+                <li class="list-group-item">
+                    <a href="{%url 'tickets:assign' ticket.id %}">
+                        <i style="padding-right: 10px;" class="fas fa-user-check"></i>
+                    </a>
+                    <a href="{%url 'tickets:delete' ticket.id %}">
+                        <i style="padding-right: 10px;" class="fas fa-trash"></i>
+                    </a>
 
 
-                <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
-                <p>Created by {{ ticket.creator }} 
-    
-                    {% if ticket.how_many_days_old > 0 %}
-                        {{ticket.how_many_days_old }}
-                        {% if ticket.how_many_days_old > 1 %}
-                            days ago.
+                    <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
+                    <p>Created by {{ ticket.creator }} 
+        
+                        {% if ticket.how_many_days_old > 0 %}
+                            {{ticket.how_many_days_old }}
+                            {% if ticket.how_many_days_old > 1 %}
+                                days ago.
+                            {% else %}
+                                day ago.
+                            {% endif %}
                         {% else %}
-                            day ago.
+                            today.
                         {% endif %}
-                    {% else %}
-                        today.
-                    {% endif %}
-                Assigned to {{ticket.owner}}</p>
-            </li>
+                    Assigned to {{ticket.owner}}</p>
+                </li>                
             {% endfor %}
         </ul>
-
     {% else %}
         <p>No tickets are available</p>
     {% endif %}

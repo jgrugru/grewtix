@@ -9,6 +9,16 @@ from django.utils import timezone
 
 user_test_password = '12345'
 
+
+##############################
+#Create test case for:
+#assign button
+#create ticket from POST request
+#edit from EDIT request
+#delete from request
+#########################
+
+
 def create_user(username):
     user = User.objects.create(username=username)
     user.set_password(user_test_password)
@@ -29,6 +39,13 @@ def create_comment_attached_to_ticket(ticket):
     comment.save()
     return comment
 
+def update_tickets_creation_date(ticket, days):
+    ticket.created_at = timezone.now() - timedelta(days=days)
+    # print("*****************************", ticket.created_at)
+    # print(ticket.how_many_days_old())
+    ticket.save()
+    return ticket
+
 class test_login(TestCase):
 
     def test_login(self):
@@ -46,17 +63,21 @@ class test_features(TestCase):
     def test_tickets_age(self):
         ticket = baker.make("Ticket")
         ticket.save()
-        response = Client().get(reverse('tickets:all_ticket_queue'))
-        self.assertContains(response, "today.")              #test that the ticket was created today.
-        ticket.created_at = timezone.now() - timedelta(days=1)
-        ticket.save()
-        response = Client().get(reverse('tickets:all_ticket_queue'))
-        self.assertContains(response, "day ago.")            #test that the ticket was created 1 day ago.
-        ticket.created_at = timezone.now() - timedelta(days=2)
-        ticket.save()
-        response = Client().get(reverse('tickets:all_ticket_queue'))
-        self.assertContains(response, "days ago.")           #test that the ticket was created 2 days ago.
-
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "today.")                         #test that the ticket was created today.
+        update_tickets_creation_date(ticket, 1)
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "day ago.")                       #test that the ticket was created 1 day ago.
+        update_tickets_creation_date(ticket, 2)
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        # obj = response
+        # for attr in dir(obj):
+        #     print("obj.%s = %r" % (attr, getattr(obj, attr)))
+        self.assertContains(response, "days ago.")                      #test that the ticket was created 2 days ago.
+        update_tickets_creation_date(ticket, -1)
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, """<ul class="list-group">""")    #test that the ticket was created 1 day in the future. Expected result is no tickets,
+                                                                        #so check that the list group is created but empty.
 
 class test_ticket_model(TestCase):
     
@@ -90,7 +111,6 @@ class test_ticket_querysets(TestCase):
         response = self.client.get(reverse('tickets:owned_by_user_queue'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'testOwner')
-        self.assertContains(response, "today")   #This needs its own test. Test to see if day/days/today is coming out correctly in html
 
     def test_owned_by_user_queue_without_ticket(self):
         self.setup_without_ticket()

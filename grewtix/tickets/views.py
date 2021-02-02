@@ -17,6 +17,9 @@ def TicketAssign(request, ticket):
 def index(request):
     return render(request, 'tickets/index.html')
 
+def ticketedit(request):
+    return render(request, 'tickets/index.html')
+ 
 # Create your views here.
 class TicketListView(generic.ListView):
     template_name = 'tickets/ticket_display_queryset.html'

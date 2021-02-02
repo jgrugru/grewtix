@@ -46,6 +46,11 @@ def update_tickets_creation_date(ticket, days):
     ticket.save()
     return ticket
 
+def output_response(response):
+    obj = response
+    for attr in dir(obj):
+        print("obj.%s = %r" % (attr, getattr(obj, attr)))
+
 class test_login(TestCase):
 
     def test_login(self):
@@ -70,14 +75,26 @@ class test_features(TestCase):
         self.assertContains(response, "day ago.")                       #test that the ticket was created 1 day ago.
         update_tickets_creation_date(ticket, 2)
         response = self.client.get(reverse('tickets:all_ticket_queue'))
-        # obj = response
-        # for attr in dir(obj):
-        #     print("obj.%s = %r" % (attr, getattr(obj, attr)))
         self.assertContains(response, "days ago.")                      #test that the ticket was created 2 days ago.
         update_tickets_creation_date(ticket, -1)
         response = self.client.get(reverse('tickets:all_ticket_queue'))
         self.assertContains(response, """<ul class="list-group">""")    #test that the ticket was created 1 day in the future. Expected result is no tickets,
                                                                         #so check that the list group is created but empty.
+
+    def test_assign_button(self):
+        owner = create_user('testOwner')
+        creator = create_user('testCreator')
+        x = create_ticket('test ticket', creator, creator) 
+        self.client.login(username='testOwner', password=user_test_password)            #Login as testowner
+        response = self.client.get(reverse('tickets:owned_by_user_queue'))
+        self.assertContains(response, 'No tickets are available')
+
+        response = self.client.get(reverse('tickets:assign', kwargs={'ticket': x.id}))  #Check that the assign/ticket.id redirects to the edit page
+        self.assertEqual(response.status_code, 302)
+        
+        response = self.client.get(reverse('tickets:owned_by_user_queue'))              #check that the assign user worked correctly
+        self.assertContains(response, 'testOwner')
+        
 
 class test_ticket_model(TestCase):
     
@@ -90,7 +107,7 @@ class test_ticket_model(TestCase):
         response = Client().get(reverse('tickets:edit', kwargs={'pk': ticket.id}))
         self.assertContains(response, comment.comment)      #Test that the comment appears in the ticket edit page.
 
-class test_ticket_querysets(TestCase):
+class test_ticket_querysets_view(TestCase):
 
     def __init__(self, x):
         super().__init__(x)

@@ -3,7 +3,7 @@ from django.views import generic
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .forms import TicketForm
 from .models import Ticket, Comment
@@ -12,7 +12,7 @@ def TicketAssign(request, ticket):
     ticket = Ticket.objects.get(id=ticket)
     ticket.owner = User.objects.get(id=request.user.id)
     ticket.save()
-    return CreatedByUserView.as_view()(request)
+    return HttpResponseRedirect(reverse('tickets:edit', kwargs={'pk': ticket.id}))   #Is there a better way to do this??????
 
 def index(request):
     return render(request, 'tickets/index.html')

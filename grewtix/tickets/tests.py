@@ -4,8 +4,19 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from model_bakery import baker
 from django.urls import reverse
+from datetime import timedelta
+from django.utils import timezone
 
 user_test_password = '12345'
+
+
+##############################
+#Create test case for:
+#create ticket from POST request
+#edit from EDIT request
+#delete from request
+#########################
+
 
 def create_user(username):
     user = User.objects.create(username=username)
@@ -19,10 +30,23 @@ def create_ticket(ticket_subject, owner, creator):
     x.creator = creator
     x.subject = ticket_subject
     x.save()
-    # print(x.subject, x.creator, x.owner, x.created_at)
-    # print(x.ticketType, x.subject, x.project, x.description, x.priority, x.status, x.creator, x.owner)
     return x
- 
+
+def create_comment_attached_to_ticket(ticket):
+    comment = baker.make("Comment")
+    comment.ticketID = ticket
+    comment.save()
+    return comment
+
+def update_tickets_creation_date(ticket, days):
+    ticket.created_at = timezone.now() - timedelta(days=days)
+    ticket.save()
+    return ticket
+
+def output_response(response):
+    obj = response
+    for attr in dir(obj):
+        print("obj.%s = %r" % (attr, getattr(obj, attr)))
 
 class test_login(TestCase):
 
@@ -38,18 +62,57 @@ class test_features(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Unassigned Queue")
 
+    def test_tickets_age(self):
+        ticket = baker.make("Ticket")
+        ticket.save()
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "today.")                         #test that the ticket was created today.
+        update_tickets_creation_date(ticket, 1)
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "day ago.")                       #test that the ticket was created 1 day ago.
+        update_tickets_creation_date(ticket, 2)
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, "days ago.")                      #test that the ticket was created 2 days ago.
+        update_tickets_creation_date(ticket, -1)
+        response = self.client.get(reverse('tickets:all_ticket_queue'))
+        self.assertContains(response, """<ul class="list-group">""")    #test that the ticket was created 1 day in the future. Expected result is no tickets,
+                                                                        #so check that the list group is created but empty.
+
+    def test_assign_button(self):
+        owner = create_user('testOwner')
+        creator = create_user('testCreator')
+        x = create_ticket('test ticket', creator, creator) 
+        self.client.login(username='testOwner', password=user_test_password)            #Login as testowner
+        response = self.client.get(reverse('tickets:owned_by_user_queue'))
+        self.assertContains(response, 'No tickets are available')
+
+        response = self.client.get(reverse('tickets:assign', kwargs={'ticket_id': x.id}))  #Check that the assign/ticket.id redirects to the edit page
+        self.assertEqual(response.status_code, 302)
+        
+        response = self.client.get(reverse('tickets:owned_by_user_queue'))              #check that the assign user worked correctly
+        self.assertContains(response, 'testOwner')
+
+    def test_regex_edit_ticket_path(self):                                              #test that the reged path for tickets (ex. '\edit\prod-21')
+        response = self.client.get('/edit/test-1234')                                   #expected output should be a redirect to 'edit\21' if the ticket
+        self.assertContains(response, "Could not find the ticket you are looking for.") #exists.
+        ticket = baker.make("Ticket")
+        ticket.save()
+        response = self.client.get('/edit/' + str(ticket))
+        self.assertEqual(response.status_code, 302)
+        
+
 class test_ticket_model(TestCase):
     
     def test_get_comments(self):
         ticket = baker.make("Ticket")
         ticket.save()
         self.assertIs(ticket.get_comments(), None)          #Test without a comment, expected result is None
-        comment = baker.make("Comment")
-        comment.ticketID = ticket
-        comment.save()
+        comment = create_comment_attached_to_ticket(ticket)
         self.assertTrue(comment in ticket.get_comments())   #Test with a comment, expected result is comment to be returned in queryset
+        response = Client().get(reverse('tickets:edit', kwargs={'pk': ticket.id}))
+        self.assertContains(response, comment.comment)      #Test that the comment appears in the ticket edit page.
 
-class test_ticket_querysets(TestCase):
+class test_ticket_querysets_view(TestCase):
 
     def __init__(self, x):
         super().__init__(x)
@@ -125,9 +188,6 @@ class test_ticket_querysets(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'No tickets are available')
 
-
-        # for z in Ticket.objects.all():
-        #     print("****************&&&&&&&&&&&&&&$$$$$$$$$$$$$$$$$$", z.owner)
-        #obj = response
+        # obj = response
         # for attr in dir(obj):
         #     print("obj.%s = %r" % (attr, getattr(obj, attr)))

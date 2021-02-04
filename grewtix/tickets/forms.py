@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ticket
+from .models import Ticket, Comment
 
 class TicketForm(forms.ModelForm):
     class Meta:
@@ -21,3 +21,15 @@ class TicketForm(forms.ModelForm):
             'creator',
             'owner',
         ]
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+
+        widgets = {
+            'comment': forms.Textarea(),
+            'creator': forms.HiddenInput(),
+        }
+
+        fields = ['comment', 'creator']

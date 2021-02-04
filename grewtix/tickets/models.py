@@ -65,7 +65,9 @@ class Ticket(TimeStampMixin):
         return self.ticketType.ticketType + '-' + str(self.id)
 
     def how_many_days_old(self):
-        return int(dateformat.format(timezone.now(), 'd')) - int(dateformat.format(self.created_at,'d'))
+        # date_object = dateformat.format(timezone.now(), 'd' - dateformat.format(self.created_at,'d')
+        delta = timezone.now() - self.created_at
+        return delta.days
 
     def get_comments(self):
         queryset = Comment.objects.filter(ticketID=self.id)
@@ -84,5 +86,9 @@ class Comment(TimeStampMixin): #1 to many
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.comment
+        return 'Comment {} by {}'.format(self.comment, self.creator)
 
+    def how_many_days_old(self):
+        # date_object = dateformat.format(timezone.now(), 'd' - dateformat.format(self.created_at,'d')
+        delta = timezone.now() - self.created_at
+        return delta.days

@@ -6,19 +6,22 @@
 
     </form>
 
+
     <div class="container">
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Comments</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+
+        <form method="post">{% csrf_token %}
+    
+            {% include 'tickets/comment_form_template.html' %} 
+    
+        </form>
+    
         <ul class="list-group">
             {% for x in ticket.get_comments %}
             <li class="list-group-item">
-                <p>{{ x }}</p>
+                <p>{{ x }}</p> <a href="{% url 'tickets:index' %}"><i class="fas fa-edit"></i></a>
             </li>
             {% endfor %}
         </ul>
-    </div>
-            
+    </div>            
 
 </div>

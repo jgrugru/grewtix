@@ -1,0 +1,14 @@
+{% load widget_tweaks %}
+
+
+<div class="form-group row">
+    <div class="col">
+        {% render_field comment_form.comment class="form-control rounded-0" rows=3 %}
+    </div>
+    <div class="col-2">
+        <input type='submit' value='Save' />
+    </div>
+
+</div>
+
+{% render_field comment_form.creator value=user.id %}

@@ -12,7 +12,6 @@ user_test_password = '12345'
 
 ##############################
 #Create test case for:
-#assign button
 #create ticket from POST request
 #edit from EDIT request
 #delete from request
@@ -41,8 +40,6 @@ def create_comment_attached_to_ticket(ticket):
 
 def update_tickets_creation_date(ticket, days):
     ticket.created_at = timezone.now() - timedelta(days=days)
-    # print("*****************************", ticket.created_at)
-    # print(ticket.how_many_days_old())
     ticket.save()
     return ticket
 
@@ -89,11 +86,19 @@ class test_features(TestCase):
         response = self.client.get(reverse('tickets:owned_by_user_queue'))
         self.assertContains(response, 'No tickets are available')
 
-        response = self.client.get(reverse('tickets:assign', kwargs={'ticket': x.id}))  #Check that the assign/ticket.id redirects to the edit page
+        response = self.client.get(reverse('tickets:assign', kwargs={'ticket_id': x.id}))  #Check that the assign/ticket.id redirects to the edit page
         self.assertEqual(response.status_code, 302)
         
         response = self.client.get(reverse('tickets:owned_by_user_queue'))              #check that the assign user worked correctly
         self.assertContains(response, 'testOwner')
+
+    def test_regex_edit_ticket_path(self):                                              #test that the reged path for tickets (ex. '\edit\prod-21')
+        response = self.client.get('/edit/test-1234')                                   #expected output should be a redirect to 'edit\21' if the ticket
+        self.assertContains(response, "Could not find the ticket you are looking for.") #exists.
+        ticket = baker.make("Ticket")
+        ticket.save()
+        response = self.client.get('/edit/' + str(ticket))
+        self.assertEqual(response.status_code, 302)
         
 
 class test_ticket_model(TestCase):

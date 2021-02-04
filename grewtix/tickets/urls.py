@@ -11,17 +11,9 @@ urlpatterns = [
     path('recently_created_queue/', views.RecentlyCreatedView.as_view(), name='recently_created_queue'),
     path('all_ticket_queue/', views.AllTicketsView.as_view(), name='all_ticket_queue'),
     path('create/', views.TicketCreate.as_view(), name='create'),
-    # re_path(r'^edit/[a-zA-Z0-9]+[-][0-9]+', views.ticketedit, name='edit'),
+    re_path(r'^edit/[a-zA-Z]+[-][0-9]+', views.ticketedit, name='edit'),
     path('edit/<int:pk>', views.TicketUpdate.as_view(), name='edit'),
     path('<pk>/delete/', views.TicketDelete.as_view(), name='delete'),
-    path('assign/<int:ticket>', views.TicketAssign, name="assign"),
-    # path('<int:ticket_id>/', views.ticket_edit_view, name='edit')
+    path('assign/<int:ticket_id>', views.TicketAssign, name="assign"),
+    #path('comment/<int:comment>', views.CommentOnTicket, name="comment"),
 ]
-
-############
-#Add regex to dynamically create view based on ticket type
-    # obj = request
-    # for attr in dir(obj):
-    #     print("obj.%s = %r" % (attr, getattr(obj, attr)))
-    # print(obj.path)
-    ####request.path holds the get request from the url

@@ -1,0 +1,24 @@
+/* button {
+    background-color: rgb(204, 200, 200) !important;
+    border-color: rgb(255, 255, 255) !important;
+}
+
+.rectangle-link {
+    background-color: dimgrey;
+    border-radius: 10%;
+}
+
+.rectangle-link: hover {
+    feDiffuseLighting::backdrop;
+} */
+
+.card-body {
+    border-style: solid!important;
+    border-width: 2px!important;
+    border-color: black!important;
+    border-radius: 5px;
+}
+
+.card-title {
+    font-weight: 900;
+}

@@ -39,6 +39,8 @@ Here's a pic of the home page queue on youtrack:
 
 ![Youtrack Queue](https://www.jetbrains.com/youtrack/img/screenshots/70/Issue_list@2x.png)
 
+I created my own design mock-up that I think would work best. You can view the mock-up (here)[https://www.figma.com/file/HC2X9khLUbBmUl4FErxAeN/Grewtix?node-id=0%3A1]
+
  * I have still have plenty of features missing. For example, if trying to design a search bar, feel free to design the search bar. That feature will be added later, but the html can be added now. 
  * While designing, if you come up with other features that should be added: new icons, buttons, etc, please add them to your branch's collobaration.md below.
  

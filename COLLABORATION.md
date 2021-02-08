@@ -47,4 +47,5 @@ I created my own design mock-up that I think would work best. You can view the m
 Features to add
 ================
 List any feature you would like to see added here.
-- add a "coming soon" page
+- Make all pages dynamic through matching regex patterns -- finished for ticket edit
+- Allow users to post and edit comments

@@ -33,6 +33,10 @@ def ticketedit(request):
     else:
         return HttpResponse("Could not find the ticket you are looking for.") 
 
+def reports(request):
+    return render(request, 'tickets/ticket_reports.html')
+
+
 ##############################
 # Returns different query sets for the ticket class
 class TicketListView(generic.ListView):
@@ -78,13 +82,11 @@ class TicketCreate(TicketFormView, CreateView):
 class TicketUpdate(TicketFormView, UpdateView):
     template_name = 'tickets/ticket_update_form.html'
 
-
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # context['ticket_form'] = TicketForm
         context['comment_form'] = CommentForm
-        context['testing'] = "I am a test. Hello."
         return context
 
 class TicketDelete(TicketFormView, DeleteView):

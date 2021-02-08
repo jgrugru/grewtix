@@ -15,5 +15,6 @@ urlpatterns = [
     path('edit/<int:pk>', views.TicketUpdate.as_view(), name='edit'),
     path('<pk>/delete/', views.TicketDelete.as_view(), name='delete'),
     path('assign/<int:ticket_id>', views.TicketAssign, name="assign"),
+    path('reports/', views.reports, name="reports")
     #path('comment/<int:comment>', views.CommentOnTicket, name="comment"),
 ]

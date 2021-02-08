@@ -60,7 +60,8 @@ class test_features(TestCase):
     def test_index_response_code(self):
         response = self.client.get(reverse('tickets:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Unassigned Queue")
+        output_response(response)
+        self.assertContains(response, "Unassigned\n                    Queue")
 
     def test_tickets_age(self):
         ticket = baker.make("Ticket")

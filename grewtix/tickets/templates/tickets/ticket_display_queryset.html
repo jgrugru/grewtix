@@ -1,11 +1,16 @@
 {% include 'tickets/design/header.html' %}
 
-
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head> 
-
 <div class="container">
+
+    <div class="input-group">
+        <div class="form-outline">
+            <input type="search" id="search-form" class="form-control w-100" />
+        </div>
+        <button type="button" class="btn">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
     {% if ticket_list %} 
         <ul class="list-group">
             {% for ticket in ticket_list %}
@@ -39,9 +44,5 @@
         <p>No tickets are available</p>
     {% endif %}
 
-    <!-- <div class = "d-flex justify-content-end"> -->
-    <div class="container">
-        <a href="{% url 'tickets:create' %}"><i class="fas fa-plus-square fa-2x"></i></a>
-    </div>
 </div>
 

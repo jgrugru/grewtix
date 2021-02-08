@@ -1,30 +1,31 @@
 {% include 'tickets/design/header.html' %}
 
 
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head> 
-
 <div class="container">
     <br>
-   <div class="list-group">
-       <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:unassigned_queue' %}"><button type="button" class="btn btn-primary">Unassigned Queue</button></a>
-       </li>
-       <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:owned_by_user_queue' %}"><button type="button" class="btn btn-primary">My Queue</button></a>
-       </li>
-       <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:created_by_user_queue' %}"><button type="button" class="btn btn-primary">Created By Me Queue</button></a>
-       </li>
+    <div class="list-group">
         <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:recently_created_queue' %}"><button type="button" class="btn btn-primary">Recently Created Queue</button></a>
+            <a href="{% url 'tickets:unassigned_queue' %}"><button type="button" class="btn btn-primary">Unassigned
+                    Queue</button></a>
         </li>
         <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:all_ticket_queue' %}"><button type="button" class="btn btn-primary">All Tickets Queue</button></a>
+            <a href="{% url 'tickets:owned_by_user_queue' %}"><button type="button" class="btn btn-primary">My
+                    Queue</button></a>
         </li>
-   </div>
-   <br>
+        <li class="list-group-item rectangle-link">
+            <a href="{% url 'tickets:created_by_user_queue' %}"><button type="button" class="btn btn-primary">Created By
+                    Me Queue</button></a>
+        </li>
+        <li class="list-group-item rectangle-link">
+            <a href="{% url 'tickets:recently_created_queue' %}"><button type="button" class="btn btn-primary">Recently
+                    Created Queue</button></a>
+        </li>
+        <li class="list-group-item rectangle-link">
+            <a href="{% url 'tickets:all_ticket_queue' %}"><button type="button" class="btn btn-primary">All Tickets
+                    Queue</button></a>
+        </li>
+    </div>
+    <br>
 </div>
 
 {% include 'tickets/design/footer.html' %}

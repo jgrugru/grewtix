@@ -51,11 +51,14 @@
 
 .grew-link {
     color: white!important;
-    text-transform: uppercase;
     font-size: 20px;
     margin-top: 15px;
     margin-bottom: 15px;
     font-weight: 350;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }
 
 .grew-link:hover {

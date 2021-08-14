@@ -121,7 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    "/home/jgruenbaum/Desktop/programming_projects/grewtix/grewtix/static",
+    "/home/jgruenbaum/Desktop/programming_projects/grewtix_project/grewtix/static",
 ]
 
 # Default primary key field type

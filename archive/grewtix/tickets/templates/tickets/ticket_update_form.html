@@ -1,0 +1,27 @@
+{% include 'tickets/design/header.html' %} 
+<div class="container">
+    <form method="post">{% csrf_token %}
+    
+        {% include 'tickets/ticket_form_template.html' %} 
+
+    </form>
+
+
+    <div class="container">
+
+        <form method="post">{% csrf_token %}
+    
+            {% include 'tickets/comment_form_template.html' %} 
+    
+        </form>
+    
+        <ul class="list-group">
+            {% for x in ticket.get_comments %}
+            <li class="list-group-item">
+                <p>{{ x }}</p> <a href="{% url 'tickets:index' %}"><i class="fas fa-edit"></i></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>            
+
+</div>

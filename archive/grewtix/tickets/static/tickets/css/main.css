@@ -1,0 +1,72 @@
+/* button {
+    background-color: rgb(204, 200, 200) !important;
+    border-color: rgb(255, 255, 255) !important;
+}
+
+.rectangle-link {
+    background-color: dimgrey;
+    border-radius: 10%;
+}
+
+.rectangle-link: hover {
+    feDiffuseLighting::backdrop;
+} */
+
+.card-body {
+    border-style: solid!important;
+    border-width: 2px!important;
+    border-color: black!important;
+    border-radius: 5px;
+}
+
+.card-title {
+    font-weight: 900;
+}
+
+#home-nav {
+    display: flex;
+    height: 80px;
+    background: #152D48!important;
+    padding-bottom: 17px;
+    padding-top:17px;
+}
+
+.nav-btn + .nav-btn {
+    margin-left: 20px;
+}
+
+.grew-btn {
+    border-radius: 8px;
+    background-color: #6170A4;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding:3px 7px;
+    margin-top: 10%;
+    font-weight: 300;
+    color: white;
+    border: solid;
+    border-style: 1px;
+    border-color: #224975;
+}
+
+.grew-link {
+    color: white!important;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: 350;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.grew-link:hover {
+    text-decoration: none;
+    color:rgb(215, 215, 248)!important;
+}
+
+.grew-logo {
+    width: 41px;
+    height: 42px;
+}

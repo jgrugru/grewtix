@@ -1,0 +1,60 @@
+{% include 'base.html' %}
+{% load static %}
+
+<link rel="icon"href="{% static 'img/my-logo.png' %}">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+  integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link type='text/css' rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<style>
+  .grew-logo {
+    background-image: url("{% static 'img/my-logo.png' %}");
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id='home-nav'>
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'tickets:ticket_index' %}">
+      <div class="grew-logo" aria-hidden="true"></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link grew-link uppercase" href="{% url 'tickets:ticket_reports'%}">Reports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link grew-link uppercase" href="/admin">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickets:ticket_index'%}"><button class="grew-btn uppercase">Create
+              Issue</button></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <div class="row">
+            <div class="col nav-link grew-link">
+              {{user.get_username}}
+            </div>
+            <div class="col">
+              <a class="nav-link grew-link" href="{% url 'tickets:ticket_index'%}">Logout</a>
+            </div>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link grew-link" href="{% url 'tickets:ticket_index'%}">Login</a></li>
+        {% endif %}
+      </ul>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block page_content %}{% endblock %}

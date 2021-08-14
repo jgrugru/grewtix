@@ -1,0 +1,50 @@
+{% include 'tickets/design/header.html' %}
+
+<div class="container">
+    <br>
+
+    <div class="input-group w-100">
+        <div class="form-outline w-75">
+            <input type="search" id="search-form" class="form-control" />
+        </div>
+        <button type="button" class="btn">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <br>
+    
+    {% if ticket_list %} 
+        <ul class="list-group">
+            {% for ticket in ticket_list %}
+                <li class="list-group-item">
+                    <a href="{%url 'tickets:assign' ticket.id %}">
+                        <i style="padding-right: 10px;" class="fas fa-user-check"></i>
+                    </a>
+                    <a href="{%url 'tickets:delete' ticket.id %}">
+                        <i style="padding-right: 10px;" class="fas fa-trash"></i>
+                    </a>
+
+                    <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
+                    <p>Created by {{ ticket.creator }} 
+        
+                        {% if ticket.how_many_days_old > 0 %}
+                            {{ticket.how_many_days_old }}
+                            {% if ticket.how_many_days_old > 1 %}
+                                days ago.
+                            {% else %}
+                                day ago.
+                            {% endif %}
+                        {% else %}
+                            today.
+                        {% endif %}
+                    Assigned to {{ticket.owner}}</p>
+                </li>                
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tickets are available</p>
+    {% endif %}
+
+</div>
+

@@ -1,11 +1,20 @@
 from django.contrib import admin
+from tickets.models import Ticket, TicketType, Project
 
-from .models import TicketType, Project, Priority, Status, Ticket, Attachment, Comment
+
 # Register your models here.
-admin.site.register(TicketType)
-admin.site.register(Project)
-admin.site.register(Priority)
-admin.site.register(Status)
-admin.site.register(Ticket)
-admin.site.register(Attachment)
-admin.site.register(Comment)
+class TicketAdmin(admin.ModelAdmin):
+    pass
+
+
+class TicketTypeAdmin(admin.ModelAdmin):
+    pass
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Ticket, TicketAdmin)
+admin.site.register(TicketType, TicketTypeAdmin)
+admin.site.register(Project, ProjectAdmin)

@@ -1,29 +1,19 @@
-{% include 'tickets/design/header.html' %}
+{% extends "header.html" %}
+{% load static %}
+{% block page_content %}
 
 <div class="container">
+    <br>
 
-    <div class="input-group">
-        <div class="form-outline">
-            <input type="search" id="search-form" class="form-control w-100" />
-        </div>
-        <button type="button" class="btn">
-            <i class="fas fa-search"></i>
-        </button>
-    </div>
-
+    <br>
+    
     {% if ticket_list %} 
         <ul class="list-group">
             {% for ticket in ticket_list %}
                 <li class="list-group-item">
-                    <a href="{%url 'tickets:assign' ticket.id %}">
-                        <i style="padding-right: 10px;" class="fas fa-user-check"></i>
-                    </a>
-                    <a href="{%url 'tickets:delete' ticket.id %}">
-                        <i style="padding-right: 10px;" class="fas fa-trash"></i>
-                    </a>
 
 
-                    <a href="{% url 'tickets:edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
+                    <a href="\">{{ ticket }} : {{ticket.subject}}</a>
                     <p>Created by {{ ticket.creator }} 
         
                         {% if ticket.how_many_days_old > 0 %}
@@ -46,3 +36,4 @@
 
 </div>
 
+{% endblock %}

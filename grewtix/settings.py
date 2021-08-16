@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "tickets",
+    'widget_tweaks',
+    'tickets',
+
 ]
 
 MIDDLEWARE = [
@@ -121,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    "/home/jgruenbaum/Desktop/programming_projects/grewtix_project/grewtix/static",
+    "/home/jgruenbaum/Desktop/programming_projects/grewtix/grewtix/static"
 ]
 
 # Default primary key field type

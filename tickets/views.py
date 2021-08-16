@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
+from django.urls import reverse
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from tickets.models import Ticket
-
+from tickets.forms import TicketForm
 # Create your views here.
 
 
@@ -42,3 +44,26 @@ class UnassignedView(TicketListView):
 class AllTicketsView(TicketListView):
     def get_queryset(self):
         return Ticket.objects.all().order_by('-created_at')
+
+class TicketFormView():
+    model = Ticket
+    form_class = TicketForm
+
+    def get_success_url(self):
+        return reverse('ticket_index')
+
+class TicketCreate(TicketFormView, CreateView):
+    template_name = 'ticket_form.html'
+    form_class = TicketForm
+
+class TicketUpdate(TicketFormView, UpdateView):
+    # template_name = 'tickets/ticket_update_form.html'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # context['ticket_form'] = TicketForm
+        return context
+
+# class TicketDelete(TicketFormView, DeleteView):
+#     pass

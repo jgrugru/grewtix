@@ -50,10 +50,10 @@ class TicketFormView():
     form_class = TicketForm
 
     def get_success_url(self):
-        return reverse('ticket_index')
+        return reverse('tickets:ticket_index')
 
 class TicketCreate(TicketFormView, CreateView):
-    template_name = 'ticket_form.html'
+    template_name = 'ticket_create.html'
     form_class = TicketForm
 
 class TicketUpdate(TicketFormView, UpdateView):

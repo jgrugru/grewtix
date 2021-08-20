@@ -44,12 +44,12 @@
               {{user.get_username}}
             </div>
             <div class="col">
-              <a class="nav-link grew-link" href="{% url 'tickets:ticket_index'%}">Logout</a>
+              <a class="nav-link grew-link" href="{% url 'logout' %}">Logout</a>
             </div>
           </div>
         </li>
         {% else %}
-        <li class="nav-item"><a class="nav-link grew-link" href="{% url 'tickets:ticket_index'%}">Login</a></li>
+        <li class="nav-item"><a class="nav-link grew-link" href="{% url 'login'%}">Login</a></li>
         {% endif %}
       </ul>
       </ul>

@@ -5,6 +5,7 @@
 <div class="container">
     <form method='POST'> {% csrf_token %}
         {% include 'ticket_form.html' %}
+        <input type='submit' value='Create' />
     </form>
 </div>
 {% endblock %}

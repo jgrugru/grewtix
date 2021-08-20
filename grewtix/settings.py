@@ -9,16 +9,11 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from os import path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-a2r%)&)$iljxtg7-le_r5+dhm_)5=+dd#)fme#j(at#&b&rfw('
 
@@ -57,7 +52,7 @@ ROOT_URLCONF = 'grewtix.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['grewtix/templates/'],
+        'DIRS': [path.join(BASE_DIR, 'grewtix', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,7 +118,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    "/home/jgruenbaum/Documents/programming_projects/grewtix/grewtix/static"
+    path.join(BASE_DIR, 'grewtix', 'static')
 ]
 
 # Default primary key field type

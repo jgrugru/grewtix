@@ -13,7 +13,7 @@
                 <li class="list-group-item">
 
 
-                    <a href="\">{{ ticket }} : {{ticket.subject}}</a>
+                    <a href="{% url 'tickets:ticket_edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
                     <p>Created by {{ ticket.creator }} 
         
                         {% if ticket.how_many_days_old > 0 %}

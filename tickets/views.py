@@ -54,10 +54,9 @@ class TicketFormView():
 
 class TicketCreate(TicketFormView, CreateView):
     template_name = 'ticket_create.html'
-    form_class = TicketForm
 
 class TicketUpdate(TicketFormView, UpdateView):
-    # template_name = 'tickets/ticket_update_form.html'
+    template_name = 'ticket_update.html'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context

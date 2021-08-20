@@ -5,23 +5,23 @@
     <br>
     <div class="list-group">
         <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:unassigned_queue' %}"><button type="button" class="btn btn-primary">Unassigned
+            <a href="{% url 'tickets:ticket_unassigned_queue' %}"><button type="button" class="btn btn-primary">Unassigned
                     Queue</button></a>
         </li>
         <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:owner_queue' %}"><button type="button" class="btn btn-primary">My
+            <a href="{% url 'tickets:ticket_owner_queue' %}"><button type="button" class="btn btn-primary">My
                     Queue</button></a>
         </li>
         <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:created_queue' %}"><button type="button" class="btn btn-primary">Created By
+            <a href="{% url 'tickets:ticket_created_queue' %}"><button type="button" class="btn btn-primary">Created By
                     Me Queue</button></a>
         </li>
         <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:recent_queue' %}"><button type="button" class="btn btn-primary">Recently
+            <a href="{% url 'tickets:ticket_recent_queue' %}"><button type="button" class="btn btn-primary">Recently
                     Created Queue</button></a>
         </li>
         <li class="list-group-item rectangle-link">
-            <a href="{% url 'tickets:all_queue' %}"><button type="button" class="btn btn-primary">All Tickets
+            <a href="{% url 'tickets:ticket_all_queue' %}"><button type="button" class="btn btn-primary">All Tickets
                     Queue</button></a>
         </li>
     </div>

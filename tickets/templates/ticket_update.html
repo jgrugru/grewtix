@@ -1,0 +1,10 @@
+{% extends "header.html" %}
+{% load static %}
+{% block page_content %}
+
+<div class="container">
+    <form method='POST'> {% csrf_token %}
+        {% include 'ticket_form.html' %}
+    </form>
+</div>
+{% endblock %}

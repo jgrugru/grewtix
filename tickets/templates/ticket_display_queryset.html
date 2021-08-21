@@ -14,6 +14,9 @@
 
 
                     <a href="{% url 'tickets:ticket_edit' ticket.id %}">{{ ticket }} : {{ticket.subject}}</a>
+                    <a href="{%url 'tickets:ticket_delete' ticket.id %}">
+                        <i style="padding-right: 10px;" class="fas fa-trash"></i>
+                    </a>
                     <p>Created by {{ ticket.creator }} 
         
                         {% if ticket.how_many_days_old > 0 %}

@@ -6,6 +6,7 @@ urlpatterns = [
     path("", views.ticket_index, name="ticket_index"),
     path('create/', views.TicketCreate.as_view(), name='ticket_create'),
     path('edit/<int:pk>', views.TicketUpdate.as_view(), name='ticket_edit'),
+    path('delete/<int:pk>', views.TicketDelete.as_view(), name='ticket_delete'),
 
     path('owner/', views.OwnedByUserView.as_view(), name='ticket_owner_queue'),
     path('created_by/', views.CreatedByUserView.as_view(), name='ticket_created_queue'),

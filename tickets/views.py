@@ -65,5 +65,5 @@ class TicketUpdate(TicketFormView, UpdateView):
         # context['ticket_form'] = TicketForm
         return context
 
-# class TicketDelete(TicketFormView, DeleteView):
-#     pass
+class TicketDelete(TicketFormView, DeleteView):
+    template_name = 'ticket_confirm_delete.html'

@@ -1,11 +1,10 @@
 from django.core.management.base import BaseCommand
+from model_bakery import baker
 from tickets.models import Ticket
 
 class Command(BaseCommand):
     help = '-p: print all the tickets | ' + \
-            '-d: delete all the tickets | ' + \
-            '--populate: add test ticket data'
-
+            '-d: delete all the tickets | '
     def add_arguments(self, parser):
         parser.add_argument(
             '-p',
@@ -18,7 +17,7 @@ class Command(BaseCommand):
             help="Delete all the current tickets.",
         )
 
-    def delete_tickets():
+    def delete_tickets(self):
         print("Deleting all tickets")
         for ticket in Ticket.objects.all():
             print("Deleting " + str(ticket))

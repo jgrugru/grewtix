@@ -19,7 +19,7 @@ class TicketType(TimeStampMixin):  # 1 to many
 
 
 class Project(TimeStampMixin):  # 1 to many
-    project = models.CharField(max_length=50)
+    project = models.CharField(max_length=20)
 
     def __str__(self):
         return self.project

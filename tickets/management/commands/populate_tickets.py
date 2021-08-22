@@ -15,12 +15,12 @@ class Command(BaseCommand):
             for count in range(int(options['populate'])):
                 ticket = baker.make(
                     'Ticket',
-                    ticketType = TicketType.objects.all()[0],
-                    project = Project.objects.all()[0],
-                    description = "THIS IS A TEST.",
-                    priority = 'Low',
-                    status = "Backlog",
-                    creator = User.objects.filter(username="jgruenbaum")[0],
+                    ticketType=TicketType.objects.all()[0],
+                    project=Project.objects.all()[0],
+                    description="THIS IS A TEST.",
+                    priority='Low',
+                    status="Backlog",
+                    creator=User.objects.filter(username="jgruenbaum")[0],
                 )
                 print("Created: " + str(ticket))
                 ticket.save()

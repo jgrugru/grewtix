@@ -57,3 +57,6 @@ class Ticket(TimeStampMixin):
         # date_object = dateformat.format(timezone.now(), 'd' - dateformat.format(self.created_at,'d')
         delta = timezone.now() - self.created_at
         return delta.days
+
+    def shortened_subject_str(self):
+        return self.subject[0:20]

@@ -23,6 +23,7 @@ def reports(request):
 class TicketListView(LoginRequiredMixin, generic.ListView):
     template_name = "ticket_display_queryset.html"
     context_object_name = 'ticket_list'
+    paginate_by = 10
     login_url = '/accounts/login/'
     redirect_field_name = 'redirect_to'
 

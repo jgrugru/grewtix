@@ -5,6 +5,7 @@ app_name = 'tickets'
 urlpatterns = [
     path("", views.ticket_index, name="ticket_index"),
     path('create/', views.TicketCreate.as_view(), name='ticket_create'),
+    path('detail/<int:pk>', views.TicketDetail.as_view(), name='ticket_detail'),
     path('edit/<int:pk>', views.TicketUpdate.as_view(), name='ticket_edit'),
     path('delete/<int:pk>', views.TicketDelete.as_view(), name='ticket_delete'),
 

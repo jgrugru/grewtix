@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from tickets.models import Ticket
@@ -66,6 +67,10 @@ class TicketFormView(LoginRequiredMixin):
 
 class TicketCreate(TicketFormView, CreateView):
     template_name = 'ticket_create.html'
+
+
+class TicketDetail(TicketFormView, DetailView):
+    template_name = 'ticket_detail.html'
 
 
 class TicketUpdate(TicketFormView, UpdateView):

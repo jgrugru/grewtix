@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from model_bakery import baker
-from tickets.models import Project
+from tickets.models import Project  # noqa: F401
 
 
 class Command(BaseCommand):

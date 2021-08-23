@@ -69,7 +69,7 @@ class Command(BaseCommand):
             print(Ticket.objects.all())
 
         if options['deletetickettypes']:
-           self.delete_tickettypes()
+            self.delete_tickettypes()
 
         if options['deletetickets']:
             self.delete_tickets()

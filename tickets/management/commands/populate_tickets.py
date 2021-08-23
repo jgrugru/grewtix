@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from model_bakery import baker
-from tickets.models import Ticket, TicketType, Project
+from tickets.models import Ticket, TicketType, Project  # noqa: F401
 from django.contrib.auth.models import User
 
 

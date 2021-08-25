@@ -51,15 +51,15 @@ class Ticket(TimeStampMixin):
     creator = models.ForeignKey(User, related_name='creator', on_delete=models.CASCADE)
     owner = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, blank=True, null=True)
 
-    def get_absolute_url(self):
-        return reverse('tickets:ticket_detail', args=[str(self.id)])
-
     def how_many_days_old(self):
         delta = timezone.now() - self.created_at
         return delta.days
 
     def shortened_subject_str(self):
         return self.subject[0:20]
+
+    def get_absolute_url(self):
+        return reverse('tickets:ticket_detail', args=[str(self.id)])
 
     def __str__(self):
         return self.ticketType.ticketType + '-' + str(self.id)

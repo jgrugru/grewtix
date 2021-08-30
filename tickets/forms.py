@@ -9,7 +9,7 @@ class TicketForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(),
             'creator': forms.HiddenInput(),
-            }
+        }
 
         fields = [
             'ticketType',
@@ -21,3 +21,11 @@ class TicketForm(forms.ModelForm):
             'creator',
             'owner',
         ]
+
+        # help_texts = {
+        #     'subject': 'Group to which this message belongs to',
+        # }
+
+        # error_messages={
+        #     'required': 'Please enter your name'
+        # }

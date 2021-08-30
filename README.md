@@ -24,22 +24,20 @@ Grewtix is a ticketing system built through the Python framework Django. Through
 
 Features to add
 ---------------
- * UI design overhaul: give design to login, logout, and other random pages. Redesign ticket form and index, make it user friendly
- * create a dockerfile to run this application
- * setup the ticket claim button through ajax, make the call asynchronously 
  * add comment functionality
  * add attachment functionality
- * Create a simple reports page (total finished tickets, tickets finished by user)
- * Create a profile page
  * add reviewers to tickets
  * add tag field to tickets
+ * UI design overhaul: give design to login, logout, and other random pages. Redesign ticket form and index, make it user friendly
+ * create a dockerfile to run this application
+ * Create a simple reports page (total finished tickets, tickets finished by user)
+ * Create a profile page
 
 Long term goals
 ------------------------
  * Create teams/groups to view tickets inside teams/groups
  * Create customizable dashboard
- * Add api for dynamic ticket creation
- * Add api for list of tickets sorted by user/team/project/etc.
+ * Add api for dynamic ticket creation and ticket queries
  * Add time tracking for in progress tickets or manual entry of time
 
 Reason for development

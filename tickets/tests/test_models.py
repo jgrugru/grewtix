@@ -4,7 +4,7 @@ from tickets.models import Ticket, TicketType, Project  # flake8: F401
 
 
 class TicketModelTestCase(TestCase):
-    @classmethod  # ran once at beginning of testing.
+    @classmethod
     def setUpTestData(cls):
         ticket = baker.make(
             'Ticket',

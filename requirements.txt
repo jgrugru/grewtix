@@ -1,6 +1,6 @@
 asgiref==3.4.1
 attrs==21.2.0
-Django==3.2.6
+Django==3.2.12
 django-widget-tweaks==1.4.8
 flake8==3.9.2
 iniconfig==1.1.1
